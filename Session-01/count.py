@@ -1,4 +1,4 @@
-#Session 1-excercise 2
+#Session 1-exercise 2
 
 for i in range(1,21):
-    print(i, end = ' ')
+    print(i)
