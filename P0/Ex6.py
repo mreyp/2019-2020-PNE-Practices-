@@ -6,5 +6,5 @@ filename = 'U5.txt'
 sequence = seq_read_fasta(folder + filename)
 
 print('Gene ' + filename + ':')
-print('Gene ' + (sequence[:19]))
-print('Frag: ', seq_reverse(sequence[:19]))
+print('Gene ' + (sequence[:20]))
+print('Frag: ', seq_reverse(sequence[:20]))

@@ -36,4 +36,10 @@ def seq_complement(seq):
     bases = ['A', 'C', 'T', 'G']
     compl_bases = ['T', 'G', 'A', 'C']
     dict_bases_compl = dict(zip(bases, compl_bases))
-    seq.replace(bases, compl_bases)
+    complementary = ''
+    for i in seq:
+        for base, c_bases in dict_bases_compl.items():
+            if i == base:
+                complementary += c_bases
+    return(complementary)
+
