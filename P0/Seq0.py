@@ -38,8 +38,8 @@ def seq_complement(seq):
     dict_bases_compl = dict(zip(bases, compl_bases))
     complementary = ''
     for i in seq:
-        for base, c_bases in dict_bases_compl.items():
+        for base, c_base in dict_bases_compl.items():
             if i == base:
-                complementary += c_bases
+                complementary += c_base
     return(complementary)
 
