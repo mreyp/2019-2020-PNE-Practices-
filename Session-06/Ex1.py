@@ -3,8 +3,7 @@ class Seq:
 
     def __init__(self, strbases):
 
-        # Initialize the sequence with the value
-        # passed as argument when creating the object
+
         bases = ['A', 'C', 'T', 'G']
         for i in strbases:
             if i not in bases:
