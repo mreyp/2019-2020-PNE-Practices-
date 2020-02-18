@@ -3,12 +3,13 @@ class Seq:
 
     def __init__(self, strbases):
 
-
+        # Initialize the sequence with the value
+        # passed as argument when creating the object
         bases = ['A', 'C', 'T', 'G']
         for i in strbases:
             if i not in bases:
                 print("ERROR!!")
-                self.strbases = "ERROR"
+                self.strbases = "INCORRECT sequence detected"
                 return
 
         self.strbases = strbases
@@ -19,13 +20,6 @@ class Seq:
         # -- We just return the string with the sequence
         return self.strbases
 
-    def len(self):
-        return len(self.strbases)
-
-    pass
-
-class Gene(Seq):
-    pass
 
 s1 = Seq("ACCTGC")
 s2 = Seq("Hello? Am I a valid sequence?")
