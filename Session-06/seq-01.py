@@ -18,6 +18,8 @@ class Seq:
         """Calculate the length of the sequence"""
         return len(self.strbases)
 
+    pass
+
 class Gene(Seq):
     """This class is derived from the Seq Class
        All the objects of class Gene will inherite

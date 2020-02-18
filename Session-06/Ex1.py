@@ -6,19 +6,30 @@ class Seq:
         # Initialize the sequence with the value
         # passed as argument when creating the object
         bases = ['A', 'C', 'T', 'G']
+        for i in strbases:
+            if i not in bases:
+                print("ERROR!!")
+                self.strbases = "ERROR"
+                return
 
         self.strbases = strbases
         print("New sequence created!")
 
     def __str__(self):
         """Method called when the object is being printed"""
-
         # -- We just return the string with the sequence
         return self.strbases
 
+    def len(self):
+        return len(self.strbases)
+
+    pass
+
+class Gene(Seq):
+    pass
+
 s1 = Seq("ACCTGC")
 s2 = Seq("Hello? Am I a valid sequence?")
+print(f"Sequence 1: {s1}")
+print(f"Sequence 2: {s2}")
 
-
-    print(f"Sequence 1: {s1}")
-    print(f"Sequence 2: {s2}")
