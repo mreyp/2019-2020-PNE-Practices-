@@ -39,24 +39,41 @@ class Seq:
     def count_base(self, base):
         return self.strbases.count(base)
 
-    def count(seq):
+    def count(self):
         bases = ['A', 'C', 'T', 'G']
         count_bases = []
         for base in bases:
-            count_bases.append(seq.count_base(seq, base))
+            count_bases.append(self.count_base( base))
         dicti = dict(zip(bases, count_bases))
         return dicti
 
-    def reverse(seq):
-        return seq[::-1]
+    def reverse(self):
+        if not len(self.strbases) and not self.len():
+            return self.strbases
+        elif not self.len():
+            return self.strbases
+        else:
+            return self.strbases[::-1]
 
-    def complement(seq):
-        bases = ['A', 'C', 'T', 'G']
-        compl_bases = ['T', 'G', 'A', 'C']
-        dict_bases_compl = dict(zip(bases, compl_bases))
-        complementary = ''
-        for i in seq:
-            for base, c_base in dict_bases_compl.items():
-                if i == base:
-                    complementary += c_base
-        return (complementary)
+    def complement(self):
+        if not len(self.strbases) and not self.len():
+            return self.strbases
+        elif not self.len():
+            return self.strbases
+        else:
+            bases = ['A', 'C', 'T', 'G']
+            compl_bases = ['T', 'G', 'A', 'C']
+            dict_bases_compl = dict(zip(bases, compl_bases))
+            complementary = ''
+            for i in self.strbases:
+                for base, c_base in dict_bases_compl.items():
+                    if i == base:
+                        complementary += c_base
+            return (complementary)
+
+    from pathlib import Path
+
+    def read_fasta(filename):
+        file_contents = Path(filename).read_text().split('\n')[1:]
+        new_file = "".join(file_contents)
+        return new_file
