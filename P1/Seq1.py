@@ -1,10 +1,19 @@
+import self as self
+
+
 class Seq:
     """A class for representing sequence objects"""
 
-    def __init__(self, strbases):
-
+    def __init__(self, strbases="NULL"):
         # Initialize the sequence with the value
         # passed as argument when creating the object
+
+        if strbases == "NULL":
+            print("NULL Seq created")
+            self.strbases = "NULL"
+
+            return
+
         self.strbases = strbases
         print("New sequence created!")
 
@@ -19,4 +28,3 @@ class Seq:
         return len(self.strbases)
 
     pass
-
