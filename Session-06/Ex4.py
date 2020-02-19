@@ -10,6 +10,8 @@ class Seq:
                 return
 
         self.strbases = strbases
+        print("New sequence created!")
+
 
     def __str__(self):
         return self.strbases
@@ -20,8 +22,27 @@ class Seq:
 seq_list = [Seq("ACT"), Seq("GATA"), Seq("CAGATA")]
 
 
-def print_seqs(seq_list,termcolor):
+def print_seqs(seq_list,color):
     for seq in seq_list:
-        termcolor.cprint("Sequence ", seq_list.index(seq), ":", "(Length: ", seq.len(),")", seq, 'green')
+        termcolor.cprint(f"Sequence {seq_list.index(seq)}: (Length: {seq.len()}) {seq}", color)
 
-print_seqs(seq_list, termcolor)
+
+def generate_seqs(pattern, number):
+
+    sequences = []
+
+    for i in range(1, number + 1):
+        sequences.append(Seq(pattern * i))
+    return sequences
+
+
+#- - Main program
+seq_list1 = generate_seqs("A", 3)
+seq_list2 = generate_seqs("AC", 5)
+
+termcolor.cprint("List 1:", 'blue')
+print_seqs(seq_list1, 'blue')
+
+print()
+termcolor.cprint("List 2:",  'green')
+print_seqs(seq_list2, 'green')
