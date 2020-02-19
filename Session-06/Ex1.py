@@ -20,6 +20,9 @@ class Seq:
         # -- We just return the string with the sequence
         return self.strbases
 
+    def len(self):
+        """Calculate the length of the sequence"""
+        return len(self.strbases)
 
 s1 = Seq("ACCTGC")
 s2 = Seq("Hello? Am I a valid sequence?")

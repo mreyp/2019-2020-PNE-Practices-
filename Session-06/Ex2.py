@@ -15,10 +15,12 @@ class Seq:
     def len(self):
         return len(self.strbases)
 
-seq_list = [Seq("ACT"), Seq("GATA"), Seq("CAGATA")]
 
 def print_seqs(seq_list):
         for seq in seq_list:
-            print("Sequence ", seq_list.index(seq), ":", "(Length: ", seq.len(),")", seq)
+            print(f"Sequence {seq_list.index(seq)}: (Length: {seq.len()}) {seq}")
+
+#main program
+seq_list = [Seq("ACT"), Seq("GATA"), Seq("CAGATA")]
 
 print_seqs(seq_list)
