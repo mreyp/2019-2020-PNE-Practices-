@@ -1,5 +1,4 @@
 import pathlib
-import self as self
 
 
 class Seq:
@@ -33,9 +32,7 @@ class Seq:
         return self.strbases
 
     def len(self):
-        return (self.length)
-
-
+        return self.length
 
     def count_base(self, base):
         return self.strbases.count(base)
@@ -44,7 +41,7 @@ class Seq:
         bases = ['A', 'C', 'T', 'G']
         count_bases = []
         for base in bases:
-            count_bases.append(self.count_base( base))
+            count_bases.append(self.count_base(base))
         dicti = dict(zip(bases, count_bases))
         return dicti
 
@@ -70,9 +67,7 @@ class Seq:
                 for base, c_base in dict_bases_compl.items():
                     if i == base:
                         complementary += c_base
-            return (complementary)
-
-
+            return complementary
 
     def read_fasta(self, filename):
         file_contents = pathlib.Path(filename).read_text().split('\n')[1:]

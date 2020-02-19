@@ -1,12 +1,10 @@
-
 from Seq1 import Seq
+
 print("-----| Practice 1, Exercise 10 |------")
 folder = "../Session-04/"
 
-
-
-bases = [ 'A', 'C', 'T', 'G']
-genes = ['U5', 'ADA', 'FRAT1','FXN', 'RNU6_269P']
+bases = ['A', 'C', 'T', 'G']
+genes = ['U5', 'ADA', 'FRAT1', 'FXN', 'RNU6_269P']
 
 for file in genes:
     s = Seq()

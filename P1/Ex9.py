@@ -7,6 +7,6 @@ s = Seq()
 s.read_fasta(filename)
 
 print(f"Sequence : (Length: {s.len()}) {s}")
-print('\tBases: ',s.count())
+print("\tBases: ", s.count())
 print("\tRev: ", s.reverse())
 print("\tComp:", s.complement())
