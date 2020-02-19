@@ -22,7 +22,7 @@ class Seq:
 seq_list = [Seq("ACT"), Seq("GATA"), Seq("CAGATA")]
 
 
-def print_seqs(seq_list,color):
+def print_seqs(seq_list, color):
     for seq in seq_list:
         termcolor.cprint(f"Sequence {seq_list.index(seq)}: (Length: {seq.len()}) {seq}", color)
 
