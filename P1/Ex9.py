@@ -1,11 +1,12 @@
 from Seq1 import Seq
 
 print("-----| Practice 1, Exercise 9 |------")
+folder = "../Session-04/"
+filename = folder + 'U5.txt'
+s = Seq()
+s.read_fasta(filename)
 
-s1 = Seq()
-s1.read_fasta(FILENAME)
-
-print(f"Sequence 1: (Length: {s1.len()}) {s1}")
-print('\tBases: ',s1.count())
-print("\tRev: ", s1.reverse())
-print("\tComp:", s1.complement())
+print(f"Sequence : (Length: {s.len()}) {s}")
+print('\tBases: ',s.count())
+print("\tRev: ", s.reverse())
+print("\tComp:", s.complement())

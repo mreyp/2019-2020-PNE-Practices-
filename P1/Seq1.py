@@ -1,3 +1,4 @@
+import pathlib
 import self as self
 
 
@@ -71,9 +72,10 @@ class Seq:
                         complementary += c_base
             return (complementary)
 
-    from pathlib import Path
 
-    def read_fasta(filename):
-        file_contents = Path(filename).read_text().split('\n')[1:]
+
+    def read_fasta(self, filename):
+        file_contents = pathlib.Path(filename).read_text().split('\n')[1:]
         new_file = "".join(file_contents)
-        return new_file
+        self.strbases = new_file
+        self.length = len(self.strbases)
