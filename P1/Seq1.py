@@ -14,7 +14,7 @@ class Seq:
 
         elif strbases == "Invalid sequence":
             print("INVALID Seq!")
-            self.strbases = "Invalid sequence"
+            self.strbases = "ERROR"
 
             return
 
