@@ -12,10 +12,15 @@ class Seq:
             print("NULL Seq created")
             self.strbases = "NULL"
 
+        elif strbases == "Invalid sequence":
+            print("INVALID Seq!")
+            self.strbases = "Invalid sequence"
+
             return
 
-        self.strbases = strbases
-        print("New sequence created!")
+        else:
+            self.strbases = strbases
+            print("New sequence created!")
 
     def __str__(self):
         """Method called when the object is being printed"""
