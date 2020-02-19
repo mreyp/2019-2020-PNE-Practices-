@@ -11,14 +11,17 @@ class Seq:
         if strbases == "NULL":
             print("NULL Seq created!")
             self.strbases = "NULL"
+            self.length = 0
 
         elif strbases == "Invalid sequence":
             print("INVALID Seq!")
             self.strbases = "ERROR"
+            self.length = 0
 
         else:
             self.strbases = strbases
             print("New sequence created!")
+            self.length = len(self.strbases)
 
         return
 
@@ -29,10 +32,9 @@ class Seq:
         return self.strbases
 
     def len(self):
+        return (self.length)
 
-            return len(self.strbases)
 
-    pass
 
     def count_base(self, base):
         return self.strbases.count(base)
