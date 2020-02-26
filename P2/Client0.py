@@ -1,9 +1,10 @@
 class Client:
 
-    def __init__(ip, port):
+    def __init__(self, ip, port):
+        self.ip= ip
+        self.port = int(port)
         return
 
-    def ping():
+    def ping(self):
         print('OK!')
 
-    def
