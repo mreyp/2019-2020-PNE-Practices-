@@ -8,7 +8,7 @@ print(f"-----| Practice {PRACTICE}, Exercise {EXERCISE} |------")
 
 # -- Parameters
 IP = "10.3.33.54"
-PORT = 8081
+PORT = 8086
 FOLDER = "../Session-04/"
 filename = FOLDER + 'FRAT1.txt'
 
