@@ -1,4 +1,6 @@
 import socket
+import termcolor
+
 class Client:
 
     def __init__(self, ip, port):
@@ -23,12 +25,14 @@ class Client:
         # Send data.
         s.send(str.encode(msg))
 
-        # Receive data
-        response = s.recv(2048).decode("utf-8")
+    def debug_talk(self, msg):
+        message = str(msg)
+        response = self.talk(msg)
 
-        # Close the socket
-        s.close()
+        print("To sever: ", end="")
+        termcolor.cprint(message, "green")
 
-        # Return the response
-        return response
+        print("From sever: ", end="")
+        termcolor.cprint(message, "blue")
+
 
