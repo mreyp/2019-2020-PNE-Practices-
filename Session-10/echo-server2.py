@@ -2,7 +2,7 @@ import socket
 import termcolor
 
 # Configure the Server's IP and PORT
-IP = "10.3.35.145"
+IP = "192.168.1.58"
 PORT = 8080
 
 # -- Step 1: create the socket
@@ -24,7 +24,7 @@ while True:
     # -- Wait for a client to connect
     print("Waiting for Clients to connect")
     try:
-        (cs, client_op_port) = ls.accept()
+        (cs, client_ip_port) = ls.accept()
 
     # -- Server stopped manually
     except KeyboardInterrupt:
@@ -40,7 +40,7 @@ while True:
     else:
         c = (IP, PORT)
         count += 1
-        print(f"CONNECTION {count}", end="")
+        print(f'CONNECTION {count}. ', end="")
         print("IP, PORT:", c)
 
         # Step 5: receiving information from the server (recv and decode)
