@@ -12,5 +12,5 @@ PORT = 8086
 # -- Create a client object
 c = Client(IP, PORT)
 
-c.debug_talk("Message 1---")
-c.debug_talk("Message 2: Testing !!!")
+c.debug_talk("Message 1---", 'green')
+c.debug_talk("Message 2: Testing !!!", 'green')
