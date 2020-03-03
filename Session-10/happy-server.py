@@ -25,11 +25,11 @@ while True:
     try:
         (cs, client_op_port) = ls.accept()
 
-     # -- Server stopped manually
+    # -- Server stopped manually
     except KeyboardInterrupt:
         print("Server stopped by the user")
 
-        # -- Close the listenning socket
+        # -- Close the listening socket
         ls.close()
 
         # -- Exit!
