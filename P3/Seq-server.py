@@ -33,7 +33,7 @@ while True:
     except KeyboardInterrupt:
         print("Server stopped by the user")
 
-        # -- Close the listenning socket
+        # -- Close the listening socket
         ls.close()
 
         # -- Exit!
@@ -65,7 +65,7 @@ while True:
             count_bases_string = ""
             for base, count in seq_info.count().items():
                 s_base = str(base) + ": " + str(count) + " (" + str(
-                    round(count / seq_info.len() * 100, 2)) + "%)" + "\n"
+                    round(count / seq_info.len() * 100, 2)) + "%)" + "\n "
                 count_bases_string += s_base
 
             response = ("Sequence: " + str(seq_info) + "\n" +
@@ -83,7 +83,7 @@ while True:
         elif "GENE" in msg:
             gene = argument_command
             s = Seq()
-            s.read_fasta("../Session-04/" + gene + ".txt")
+            s.read_fasta("../Session-04/" + gene + ".txt" )
             response = str(s) + "\n"
 
         # -- The message has to be encoded into bytes
