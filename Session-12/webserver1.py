@@ -1,7 +1,5 @@
 import socket
 import termcolor
-from pathlib import Path
-
 
 # -- Server network parameters
 IP = "127.0.0.1"
@@ -31,20 +29,20 @@ def process_client(s):
     # blank line
     # Body (content to send)
 
-    # This new contents are written in HTML language
-    body = Path("index.html").read_text()
+    # -- Let's start with the body
+    body = "Hello from my first web server!\n"
 
     # -- Status line: We respond that everything is ok (200 code)
     status_line = "HTTP/1.1 200 OK\n"
 
     # -- Add the Content-Type header
-    header = "Content-Type: text/html\n"
+    header = "Content-Type: text/plain\n"
 
     # -- Add the Content-Length
     header += f"Content-Length: {len(body)}\n"
 
     # -- Build the message by joining together all the parts
-    response_msg = status_line + header + "\r\n" + body
+    response_msg = status_line + header + "\n" + body
     cs.send(response_msg.encode())
 
 
