@@ -1,8 +1,7 @@
+from pathlib import Path
+
 def seq_ping():
     print('OK!')
-
-
-from pathlib import Path
 
 
 def seq_read_fasta(filename):
@@ -41,5 +40,4 @@ def seq_complement(seq):
         for base, c_base in dict_bases_compl.items():
             if i == base:
                 complementary += c_base
-    return(complementary)
-
+    return complementary
