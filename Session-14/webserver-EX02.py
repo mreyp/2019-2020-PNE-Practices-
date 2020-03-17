@@ -3,6 +3,14 @@ import socketserver
 import termcolor
 from pathlib import Path
 
+def read_file(filename):
+    # -- Open and read the file
+    file_contents = Path(filename).read_text().split("\n")[1:]
+    body = "".join(file_contents)
+    return body
+
+FOLDER = "../Session-14/"
+
 # Define the Server's port
 PORT = 8080
 
@@ -19,54 +27,37 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         in the HTTP protocol request"""
 
         # Print the request line
-        termcolor.cprint(self.requestline, 'blue')
+        termcolor.cprint(self.requestline, 'green')
 
-        # analyze req line
-        req_line = self.requestline.split(" ")
 
-        # path
-        path = req_line[1]
-        path = path[1:]
-
-        # content type header
-        content_type = 'text/html'
-
-        if path == "":
-            path = "index.html"
-        # 2 options:
-        if path == "index.html":
-            termcolor.cprint("Main page has been requested", 'green')
-
-            # Message to client
-            contents = Path(path).read_text()
+        if self.path == "/" or self.path == "/index.html":
+            file = "index.html"
 
             # status code
             status = 200
 
         else:
-            # -- Resource NOT FOUND
-            termcolor.cprint("ERROR 404, not found", 'red')
-
-            # Message to  client
-            contents = Path("error.html").read_text()
+            file = "error.html"
 
             # status code no found
             status = 404
 
             # Generating the response message
-            self.send_response(status)
+        self.send_response(status)
 
-            # Define the content-type header:
-            self.send_header('Content-Type', 'text/plain')
-            self.send_header('Content-Length', len(contents.encode()))
+        contents = read_file(FOLDER + file)
 
-            # The header is finished
-            self.end_headers()
+         # Define the content-type header:
+        self.send_header('Content-Type', 'text/html')
+        self.send_header('Content-Length', len(contents.encode()))
 
-            # Send the response message
-            self.wfile.write(contents.encode())
+        # The header is finished
+        self.end_headers()
 
-            return
+        # Send the response message
+        self.wfile.write(contents.encode())
+
+        return
 
 
 # ------------------------
