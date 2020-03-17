@@ -2,8 +2,6 @@ from Seq0 import *
 
 seq1 = "ATTCCCGGGG"
 
-
-
 print(f"Seq:    {seq1}")
 print(f"  Rev : {seq_reverse(seq1)}")
 print(f"  Comp: {seq_complement(seq1)}")
