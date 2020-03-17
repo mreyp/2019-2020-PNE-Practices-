@@ -18,38 +18,19 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         in the HTTP protocol request"""
 
         # Print the request line
-        termcolor.cprint(self.requestline, 'blue')
-
-        #analize req line
-        req_line = self.requestline.split(" ")
-
-        #path
-        path = req_line[1]
-        path = path[1:]
-
-        #message to client
-        contents = ""
-
-        #status
-        status = 0
-
-        #content type header
-        content_type = 'text/plain'
+        termcolor.cprint(self.requestline, 'green')
 
 
         #2 options:
-        if path == "":
-            termcolor.cprint("Main page has been requested", 'green')
+        if self.path == "/":
 
             # Message to client
-            contents = "Welcome to y server"
+            contents = "Welcome to my server"
 
             # status code
             status = 200
 
         else:
-            # -- Resource NOT FOUND
-            termcolor.cprint("ERROR 404, not found", 'red')
 
             # Message to  client
             contents = "Resource not available"
@@ -57,20 +38,20 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
             # status code no found
             status = 404
 
-            # Generating the response message
-            self.send_response(status)
+        # Generating the response message
+        self.send_response(status)
 
-            # Define the content-type header:
-            self.send_header('Content-Type', 'text/plain')
-            self.send_header('Content-Length', len(contents.encode()))
+        # Define the content-type header:
+        self.send_header('Content-Type', 'text/plain')
+        self.send_header('Content-Length', len(contents.encode()))
 
-            # The header is finished
-            self.end_headers()
+        # The header is finished
+        self.end_headers()
 
-            # Send the response message
-            self.wfile.write(contents.encode())
+        # Send the response message
+        self.wfile.write(contents.encode())
 
-            return
+        return
 
 
 # ------------------------
