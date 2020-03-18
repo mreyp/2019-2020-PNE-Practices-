@@ -21,17 +21,17 @@ try:
         print("Waiting for connections at {}, {} ".format(IP, PORT))
         (clientsocket, address) = serversocket.accept()
 
-        # Another connection!e
+        # Another connection!
         number_con += 1
 
-        # Print the conection number
+        # Print the connection number
         print("CONNECTION: {}. From the IP: {}".format(number_con, address))
 
         # Read the message from the client, if any
         msg = clientsocket.recv(2048).decode("utf-8")
         print("Message from client: {}".format(msg))
 
-        # Send the messag
+        # Send the message
         message = "Hello from the Marta´s server"
         send_bytes = str.encode(message)
         # We must write bytes, not a string
