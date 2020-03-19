@@ -45,15 +45,13 @@ while True:
         # -- The received message is in raw bytes
         msg_raw = cs.recv(2048)
 
-        # -- We decode it for converting it
-        # -- into a human-redeable string
+        # -- We decode it for converting it into a human-redeable string
         msg = msg_raw.decode()
 
         # -- Print the received message
         print(f"Received Message: {msg}")
 
         # -- Step 6: Send a response message to the client
-        # -- Send a response message to the client
         response = "HELLO. I am the Happy Server :-)\n"
 
         # -- The message has to be encoded into bytes
