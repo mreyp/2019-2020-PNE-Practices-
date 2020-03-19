@@ -17,5 +17,5 @@ s.read_fasta(filename)
 # -- Create a client object
 c = Client(IP, PORT)
 
-c.debug_talk("Sending the U5 Gene to the server...", 'green')
-c.debug_talk(s, 'green')
+c.debug_talk("Sending the U5 Gene to the server...", 'blue')
+c.debug_talk(s, 'blue')
