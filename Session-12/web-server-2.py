@@ -1,14 +1,16 @@
-    import socket
-    import termcolor
+import socket
+import termcolor
 
-    # -- Server network parameters
-    IP = "127.0.0.1"
-    PORT = 8080
 
-    def process_client(s):
-        # -- Receive the request message
-        req_raw = s.recv(2000)
-        req = req_raw.decode()
+# -- Server network parameters
+IP = "127.0.0.1"
+PORT = 8080
+
+
+def process_client(s):
+    # -- Receive the request message
+    req_raw = s.recv(2000)
+    req = req_raw.decode()
 
     print("Message FROM CLIENT: ")
 
@@ -36,7 +38,7 @@
         <meta charset="utf-8">
         <title>Green server</title>
       </head>
-      <body style="background-color: pink;">
+      <body style="background-color: lightgreen;">
         <h1>GREEN SERVER</h1>
         <p>I am the Green Server! :-)</p>
       </body>
