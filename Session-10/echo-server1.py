@@ -55,7 +55,6 @@ while True:
         termcolor.cprint(msg, "green")
 
         # -- Step 6: Send a response message to the client
-        # -- Send a response message to the client
         response = f"ECHO: {msg}"
 
         # -- The message has to be encoded into bytes
