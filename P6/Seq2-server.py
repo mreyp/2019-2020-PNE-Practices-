@@ -47,13 +47,13 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
 
         # -- Content type header
         # -- Both, the error and the main page are in HTML
-        contents = Path('Error.html').read_text()
+        contents = Path('Error-1.html').read_text()
         code = 404
 
         if verb == "/":
             # Open the form1.html file
             # Read the index from the file
-            contents = Path('form-EX02.html').read_text()
+            contents = Path('form-4.html').read_text()
             code = 200
 
         elif verb == "/ping":
@@ -64,7 +64,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                    <meta charset = "utf-8" >
                      <title> PING </title >
                    </head >
-                   <body>
+                   <body style="background-color: pink;">
                    <h2> PING OK!</h2>
                    <p> The SEQ2 server in running... </p>
                    <a href="/">Main page</a>
@@ -81,27 +81,21 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
             n = int(value)
             sequence = Seq_get[n]
 
-            check_value = ""
-            if len(pairs) > 1:
-                check, check_value = pairs[1].split("=")
-                if check == "chk":
-                    value = value.upper()
             # -- Generate the html code
-            contents = """
+            contents = f"""
                     <!DOCTYPE html>
                     <html lang="en">
                     <head>
-                        <meta charset="utf-8">
-                        <title>GET</title>
+                    <meta charset="utf-8">
+                        <title> GET </title>
                     </head>
-                    <body>
+                    <body style="background-color: yellow;">
                     <h2>Sequence number {n}</h2>
-                     <p> {sequence} </p>
+                    <p> {sequence} </p>
                     <a href="/">Main page</a>
                     </body>
                     </html>
                     """
-
             code = 200
 
         elif verb == "/gene":
@@ -123,9 +117,11 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                                    <meta charset = "utf-8" >
                                      <title> GENE </title >
                                    </head >
-                                   <body>
+                                   <body style="background-color: lightblue;">
                                    <h2> Gene: {gene}</h2>
-                                   <p> {s} </p>
+                                   <textarea readonly rows="20" cols="80"> {Gene} </textarea>
+                                <br>
+                                   <br>
                                    <a href="/">Main page</a>
                                    </body>
                                    </html>
@@ -174,7 +170,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                                 <meta charset = "utf-8" >
                                   <title> OPERATION </title >
                                 </head >
-                                <body>
+                                <body style="background-color: lightgreen;">
                                 <h2> Sequence </h2>
                                 <p>{seq}</p>
                                 <h2> Operation: </h2>
