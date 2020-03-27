@@ -22,56 +22,45 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         # Print the request line
         termcolor.cprint(self.requestline, 'green')
 
-        # Analize the request line
-        req_line = self.requestline.split(' ')
+        body = """
+           <!DOCTYPE html>
+           <html lang="en" dir="ltr">
+             <head>
+               <meta charset="utf-8">
+               <title>RESULT</title>
+             </head>
+             <body>
+               <h1>Received message:</h1>
+               <p></p>
+               <a href="http://127.0.0.1:8080/">Main Page </a>
+             </body>
+           </html>
+           """
 
-        # Get the path. It always start with the / symbol
-        path = req_line[1]
-
-        # Read the arguments
-        arguments = path.split('?')
-
-        # Get the verb. It is the first argument
-        verb = arguments[0]
-
-        # -- Content type header
-        # -- Both, the error and the main page are in HTML
-        contents = Path('Error.html').read_text()
-        code = 404
-
-        if verb == "/":
+        if self.path == "/":
             # Open the form1.html file
             # Read the index from the file
             contents = Path('form-EX02.html').read_text()
             code = 200
-        elif verb == "/echo":
-            # -- Get the argument to the right of the ? symbol
-            pair = arguments[1]
-            # -- Get all the pairs name = value
-            pairs = pair.split('&')
-            # -- Get the two elements: name and value
-            name, value = pairs[0].split("=")
 
-            check_value = ""
-            if len(pairs) > 1:
-                check, check_value = pairs[1].split("=")
-                if check == "chk":
-                    value = value.upper()
-            # -- Generate the html code
-            contents = """
-                    <!DOCTYPE html>
-                    <html lang="en">
-                    <head>
-                        <meta charset="utf-8">
-                        <title>RESULT</title>
-                    </head>
-                    <body>
-                    <h2>Received message:</h2>
-                    """
-            contents += f"<p>{value}</p>"
-            contents += '<a href="/">Main page</a>'
-            contents += "</body></html>"
-            code = 200
+        elif "/echo" == self.path[0:5]:
+            chk = self.path[self.path.find("chk") + 4:]
+
+            if "chk" in self.path and "on" == chk:
+                msg = self.path[self.path.find("msg") + 4: self.path.find("&")]
+                msg_converted = msg.upper()
+
+            else:
+                msg = self.path[self.path.find("msg") + 4:]
+                msg_converted = msg
+
+            contents = body[0:body.find("<p>") + 3] + msg + body[body.find("</p>"):]
+            code = 200  # -- Status line: OK!
+
+        else:
+            contents = Path("Error.html").read_text()
+            code = 404  # -- Status line: ERROR NOT FOUND
+
 
         # Generating the response message
         self.send_response(code)  # -- Status line: OK!
@@ -106,5 +95,5 @@ with socketserver.TCPServer(("", PORT), Handler) as httpd:
         httpd.serve_forever()
     except KeyboardInterrupt:
         print("")
-        print("Stoped by the user")
+        print("Stopped by the user")
         httpd.server_close()
