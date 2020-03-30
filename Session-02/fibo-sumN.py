@@ -3,16 +3,15 @@
 def fibosum(n):
     a = 0
     m = 1
-    res = 1
-    sum = 0
+    result = 1
 
     for i in range(0, n - 1):
-        sum = a + m
+        suma = a + m
         a = m
-        m = sum
-        res +=sum
+        m = suma
+        result += suma
 
-    return res
+    return result
 
 
 print('Sum of the first 5 terms of the Fibonacci series:', fibosum(5))
