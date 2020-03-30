@@ -1,9 +1,11 @@
 sequence = input('Introduce the sequence: ')
+
 counter = 0
-a=0
-g=0
-c=0
-t=0
+a = 0
+g = 0
+c = 0
+t = 0
+
 for letter in sequence:
     counter += 1
     if letter == 'A':
@@ -15,7 +17,7 @@ for letter in sequence:
     elif letter == 'T':
         t += 1
 
-print('Total length:', counter )
+print('Total length:', counter)
 print('A:', a)
 print('G:', g)
 print('C:', c)
