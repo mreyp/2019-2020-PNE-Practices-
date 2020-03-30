@@ -3,6 +3,8 @@ a = 0
 g = 0
 c = 0
 t = 0
+
+
 with open('dna', 'r') as f:
     for line in f:
         for letter in line:
