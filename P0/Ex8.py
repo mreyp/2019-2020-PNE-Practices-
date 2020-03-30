@@ -2,11 +2,11 @@ from Seq0 import *
 print('-----| Exercise 8 |------')
 folder = "../Session-04/"
 
-bases = [ 'A', 'C', 'T', 'G']
-genes = ['U5', 'ADA', 'FRAT1','FXN', 'RNU6_269P']
+bases = ['A', 'C', 'T', 'G']
+genes = ['U5', 'ADA', 'FRAT1', 'FXN', 'RNU6_269P']
 
-for file in genes:
-    sequence = seq_read_fasta(folder + file + '.txt')
+for gene in genes:
+    sequence = seq_read_fasta(folder + gene + '.txt')
     dict_bases = seq_count(sequence)
     min_value = 0
     greater_number_base = ''
@@ -14,4 +14,4 @@ for file in genes:
         while value > min_value:
             min_value = value
             greater_number_base = base
-    print('Gene ', file, ': Most frequent Base: ', greater_number_base)
+    print('Gene ', gene, ': Most frequent Base: ', greater_number_base)
