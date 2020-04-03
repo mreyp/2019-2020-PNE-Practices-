@@ -19,5 +19,5 @@ print("Dictionary of Genes!")
 print(f"There are {len(GENES)} genes in the dictionary:\n")
 
 for gene in GENES:
-    termcolor.cprint( gene, "green", end=" : --> ")
+    termcolor.cprint(gene, "green", end=" : --> ")
     print(GENES[gene])
