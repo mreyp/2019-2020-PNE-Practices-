@@ -86,6 +86,10 @@ while True:
             s.read_fasta("../Session-04/" + gene + ".txt" )
             response = str(s) + "\n"
 
+        else:
+            termcolor.cprint("Unknown command!!!", 'red')
+            response = "Unkwnown command"
+
         # -- The message has to be encoded into bytes
         # Server Console
 

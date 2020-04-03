@@ -25,7 +25,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         # It is a happy server: It always returns a message saying
         # that everything is ok
 
-        # Message to send back to the clinet
+        # Message to send back to the client
         contents = "I am the happy server! :-)"
 
         # Generating the response message

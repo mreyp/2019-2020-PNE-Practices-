@@ -20,8 +20,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         # Print the request line
         termcolor.cprint(self.requestline, 'green')
 
-
-        #2 options:
+        # 2 options:
         if self.path == "/":
 
             # Message to client

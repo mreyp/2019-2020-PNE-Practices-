@@ -15,7 +15,7 @@ sequence_test = "ACCTCCTCTCCAGCAATGCCAACCCCAGTCCAGGCCCCCATCCGCCCAGGATCTCGATCA"
 
 print("Connection to SERVER at", IP, ", PORT: ", PORT)
 
-# TEST PING
+# PING
 print("* Testing PING...")
 print(c.talk("PING"))
 
@@ -27,7 +27,7 @@ print("GET 2:", c.talk("GET 2"))
 print("GET 3:", c.talk("GET 3"))
 print("GET 4:", c.talk("GET 4"))
 
-# TEST INFO
+# INFO
 print("\n* Testing INFO...")
 print(c.talk("INFO " + sequence_test))
 
