@@ -21,14 +21,12 @@ print(c.talk("PING"))
 
 # TEST GET
 print("\n* Testing GET...")
-print("GET 0:", c.talk("GET 0"))
-print("GET 1:", c.talk("GET 1"))
-print("GET 2:", c.talk("GET 2"))
-print("GET 3:", c.talk("GET 3"))
-print("GET 4:", c.talk("GET 4"))
+for i in range(5):
+    cmd = f"GET {i}"
+    print(f"{cmd}: {c.talk(cmd)}")
 
 # INFO
-print("\n* Testing INFO...")
+print("* Testing INFO...")
 print(c.talk("INFO " + sequence_test))
 
 # TEST COMP

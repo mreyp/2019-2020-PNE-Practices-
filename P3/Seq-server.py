@@ -83,12 +83,12 @@ while True:
         elif "GENE" in msg:
             gene = argument_command
             s = Seq()
-            s.read_fasta("../Session-04/" + gene + ".txt" )
+            s.read_fasta("../Session-04/" + gene + ".txt")
             response = str(s) + "\n"
 
         else:
             termcolor.cprint("Unknown command!!!", 'red')
-            response = "Unkwnown command"
+            response = "Unknown command"
 
         # -- The message has to be encoded into bytes
         # Server Console
