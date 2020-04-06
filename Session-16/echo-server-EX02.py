@@ -22,39 +22,36 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         # Print the request line
         termcolor.cprint(self.requestline, 'green')
 
-        body = """
-           <!DOCTYPE html>
-           <html lang="en" dir="ltr">
-             <head>
-               <meta charset="utf-8">
-               <title>RESULT</title>
-             </head>
-             <body>
-               <h1>Received message:</h1>
-               <p></p>
-               <a href="http://127.0.0.1:8080/">Main Page </a>
-             </body>
-           </html>
-           """
 
         if self.path == "/":
-            # Open the form1.html file
-            # Read the index from the file
             contents = Path('form-EX02.html').read_text()
             code = 200
 
-        elif "/echo" == self.path[0:5]:
-            chk = self.path[self.path.find("chk") + 4:]
+        elif "/echo" == self.path[0:self.path.find("?")]:  # /echo length
+            chk = self.path[self.path.find("chk") + 4:] #chk= y a partir de ahi ya lo cojo
 
             if "chk" in self.path and "on" == chk:
-                msg = self.path[self.path.find("msg") + 4: self.path.find("&")]
+                msg = self.path[self.path.find("=")+1:]  #http://127.0.0.1:8080/echo?msg=hello
                 msg_converted = msg.upper()
 
             else:
-                msg = self.path[self.path.find("msg") + 4:]
+                msg = self.path[self.path.find("msg") + 4:] #chk= y a partir de ahi ya lo cojo
                 msg_converted = msg
 
-            contents = body[0:body.find("<p>") + 3] + msg + body[body.find("</p>"):]
+            contents = f"""
+                <!DOCTYPE html>
+                       <html lang="en" dir="ltr">
+                         <head>
+                           <meta charset="utf-8">
+                           <title>RESULT</title>
+                         </head>
+                         <body>
+                           <h1>Received message:</h1>
+                           <p>{msg}</p>
+                           <a href="http://127.0.0.1:8080/">Main Page </a>
+                         </body>
+                       </html>
+                       """
             code = 200  # -- Status line: OK!
 
         else:

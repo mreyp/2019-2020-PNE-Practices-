@@ -8,30 +8,26 @@ from Seq1 import Seq
 PORT = 8080
 
 
-def html_response(title="", body=""):
-    default_body = """
+def html_response(title="", body="", color='white'):
+    default_body = f"""
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>RESULT</title>
+    <title>{title}</title>
   </head>
-  <body>
+  <body style="background-color: {color};">{body} 
     </body>
     <body>
     <a href="http://127.0.0.1:8080/">Main Page </a>
   </body>
 </html>
 """
-
-    default_body = default_body[0:default_body.find("<title>") + 7] + title + default_body[
-                                                                              default_body.find("</title>"):]
-    default_body = default_body[0:default_body.find("<body>") + 6] + body + default_body[default_body.find("</body>"):]
     return default_body
 
 
 def argument_command(request_line):
-    argument = request_line[request_line.find("=") + 1:]
+    argument = request_line[request_line.find("=") + 1:]    #devuelve lo q hay despues del =
     return argument
 
 
@@ -51,16 +47,13 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         termcolor.cprint(self.requestline, 'green')
 
         if self.path == "/":
-
             file = "form-4.html"
-
             contents = Path(file).read_text()
-
             error = 200
 
         elif "/ping" in self.path:
             html = "<h1>PING OK!</h1><p>The SEQ2 server is running...</p>"
-            contents = html_response("PING", html)
+            contents = html_response("PING", html, 'orange')  #en title va PING y en body el resto
             error = 200
 
         elif "/get" in self.path:
@@ -74,8 +67,8 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
             sequence_number = int(argument_command(self.path))
             sequence = seq_list[sequence_number]
 
-            html = "<h1>Sequence number " + str(sequence_number) + "</h1><p>" + sequence + "</p>"
-            contents = html_response("GET", html)
+            html = "<h1>Sequence number " + str(sequence_number) + "</h1> <p>" + sequence + "</p>"
+            contents = html_response("GET", html, 'pink')
 
             error = 200  # -- Status line: OK!
 
@@ -86,9 +79,9 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
             s = Seq()
             s.read_fasta("../Session-04/" + gene + ".txt")
 
-            html = "<h1>Gene Sequence: " + gene + '</h1><textarea readonly rows = "20" cols = "80">' + str(
+            html = "<h1>Gene Sequence: " + gene + '</h1> <textarea readonly rows = "20" cols = "80">' + str(
                 s) + '</textarea>'
-            contents = html_response("GENE", html)
+            contents = html_response("GENE", html, 'yellow')
 
             error = 200
 
@@ -111,6 +104,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
 
                 html_operation = "<h1>Operation:</h1><p>Info</p>"
                 html_result = "<h1>Result:</h1>" + "<p>" + response_info + "</p>"
+                color = 'lightblue'
 
             elif "comp" == op:
                 seq_comp = Seq(sequence)
@@ -118,6 +112,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
 
                 html_operation = "<h1>Operation:</h1><p>Comp</p>"
                 html_result = "<h1>Result:</h1>" + "<p>" + response_comp + "</p>"
+                color = 'blue'
 
             elif "rev" == op:
                 seq_rev = Seq(sequence)
@@ -125,11 +120,12 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
 
                 html_operation = "<h1>Operation:</h1><p>Rev</p>"
                 html_result = "<h1>Result:</h1>" + "<p>" + response_rev + "</p>"
+                color = 'lightgreen'
 
             html_sequence = "<h1>Sequence:</h1>" + "<p>" + sequence + "</p>"
             html = html_sequence + html_operation + html_result
 
-            contents = html_response("OPERATION", html)
+            contents = html_response("OPERATION", html, color)
             error = 200
 
         else:
