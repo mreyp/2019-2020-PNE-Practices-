@@ -3,8 +3,8 @@ class Seq:
         bases = ["A", 'C', 'G', 'T']
         for i in strbases:
             if i not in bases:
-                print("ERROR!")
-                self.strbases = "INCORRECT sequence detected"
+                print("INCORRECT sequence detected")
+                self.strbases = "ERROR!"
                 return
 
         self.strbases = strbases
@@ -17,10 +17,11 @@ class Seq:
 
 
 def print_seqs(seq_list):
-        for seq in seq_list:
-            print(f"Sequence {seq_list.index(seq)}: (Length: {seq.len()}) {seq}")
+    for seq in seq_list:
+        print(f"Sequence {seq_list.index(seq)}: (Length: {seq.len()}) {seq}")
 
-#main program
+
+# main program
 seq_list = [Seq("ACT"), Seq("GATA"), Seq("CAGATA")]
 
 print_seqs(seq_list)
