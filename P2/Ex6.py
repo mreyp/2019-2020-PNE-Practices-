@@ -45,7 +45,6 @@ c.talk(fragments[3])
 c.talk(fragments[4])
 
 # Print
-
 print("Gene FRAT1:", s)
 for frag in fragments:
     print(frag)

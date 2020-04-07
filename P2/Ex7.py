@@ -53,8 +53,8 @@ while x < len(fragments):
         c2.talk(fragments[x])
 
     x += 1
-# Print
 
+# Print
 print("Gene FRAT1:", s)
 for frag in fragments:
     print(frag)

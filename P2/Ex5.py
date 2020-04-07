@@ -18,4 +18,5 @@ s.read_fasta(filename)
 c = Client(IP, PORT)
 
 c.debug_talk("Sending the U5 Gene to the server...", 'blue')
+
 c.debug_talk(s, 'blue')
