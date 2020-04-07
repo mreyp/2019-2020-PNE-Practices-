@@ -2,7 +2,6 @@ class Seq:
     """A class for representing sequence objects"""
 
     def __init__(self, strbases):
-
         # Initialize the sequence with the value
         # passed as argument when creating the object
         self.strbases = strbases
@@ -10,7 +9,6 @@ class Seq:
 
     def __str__(self):
         """Method called when the object is being printed"""
-
         # -- We just return the string with the sequence
         return self.strbases
 
@@ -18,7 +16,6 @@ class Seq:
         """Calculate the length of the sequence"""
         return len(self.strbases)
 
-    pass
 
 class Gene(Seq):
     """This class is derived from the Seq Class
@@ -26,6 +23,7 @@ class Gene(Seq):
        the methods from the Seq class
     """
     pass
+
 
 # - - Main program
 # Create objects of the class Seq
