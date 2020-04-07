@@ -29,7 +29,7 @@ class Client:
         # Return the response
         return response
 
-    def debug_talk(self, msg, s):
+    def debug_talk(self, msg):
 
         message = str(msg)
 
