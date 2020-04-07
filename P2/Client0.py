@@ -30,7 +30,9 @@ class Client:
         return response
 
     def debug_talk(self, msg, s):
+
         message = str(msg)
+
         response = self.talk(msg)
 
         print("To sever: ", end="")
