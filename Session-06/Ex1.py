@@ -8,8 +8,8 @@ class Seq:
         bases = ['A', 'C', 'T', 'G']
         for i in strbases:
             if i not in bases:
-                print("ERROR!!")
-                self.strbases = "INCORRECT sequence detected"
+                print("INCORRECT sequence detected")
+                self.strbases = "ERROR"
                 return
 
         self.strbases = strbases
@@ -23,6 +23,7 @@ class Seq:
     def len(self):
         """Calculate the length of the sequence"""
         return len(self.strbases)
+
 
 s1 = Seq("ACCTGC")
 s2 = Seq("Hello? Am I a valid sequence?")
