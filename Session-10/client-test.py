@@ -4,9 +4,10 @@ import termcolor
 IP = "192.168.1.58"
 PORT = 8080
 
-c = Client(IP, PORT)
-
 for i in range(5):
+
+    c = Client(IP, PORT)
+
     print('To Server: ', end="")
     termcolor.cprint(f"Message {i}", 'blue')
     print('From Server: ', end="")
