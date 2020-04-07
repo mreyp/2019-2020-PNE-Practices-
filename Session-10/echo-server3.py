@@ -20,6 +20,7 @@ ls.listen()
 print('The server is configured!')
 count = 0
 client_ip_list = []
+
 while True:
     if count < 5:
         # -- Wait for a client to connect
@@ -41,7 +42,7 @@ while True:
         else:
             c = (IP, PORT)
             count += 1
-            client_ip_list.append(f'Client {count-1}: {client_ip_port}')
+            client_ip_list.append(f'Client {count}: {client_ip_port}')
             print(f"CONNECTION {count}. ", end="")
             print("IP, PORT:", c)
 
