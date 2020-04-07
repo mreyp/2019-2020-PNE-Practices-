@@ -42,8 +42,6 @@ while True:
         print("A client has connected to the server!")
 
         # Step 5: receiving information from the server (recv and decode)
-        # -- Read the message from the client
-        # -- The received message is in raw bytes
         msg_raw = cs.recv(2048)
 
         # -- We decode it for converting it
