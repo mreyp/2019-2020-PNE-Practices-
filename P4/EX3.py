@@ -43,7 +43,7 @@ def process_client(s):
 
     if "/info/A" in file_request:
         FILENAME = "A.html"
-        body = read(FOLDER + FILENAME)  # read() is the function read_fasta_data() from other practice
+        body = read(FOLDER + FILENAME)
     elif "/info/C" in file_request:
         FILENAME = "C.html"
         body = read(FOLDER + FILENAME)

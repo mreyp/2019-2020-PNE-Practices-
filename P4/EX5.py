@@ -39,7 +39,7 @@ def process_client(s):
 
     FOLDER = "../P4/"
     file_request = req_line.split()[1]
-    # file_request is like req_line (GET /info/A HTTP/1.1) only with (/info/A) or  (/info/C)
+    # file_request is like req_line but only with (/info/A)(c,T,G,error))
 
     if "/info/A" in file_request:
         FILENAME = "A.html"

@@ -39,22 +39,22 @@ def process_client(s):
 
     FOLDER = "../P4/"
     file_request = req_line.split()[1]
-    # file_request is like req_line (GET /info/A HTTP/1.1) only with (/info/A), (/info/C) , (/)....
+    # file_request is like req_line (GET /info/A HTTP/1.1) only with (/info/A)(C,T,G,error,/)
 
     if file_request == "/":
-        filename = "index.html"
+        FILENAME = "index.html"
     elif "/info/A" in file_request:
-        filename = "A.html"
+        FILENAME = "A.html"
     elif "/info/C" in file_request:
-        filename = "C.html"
+        FILENAME = "C.html"
     elif "/info/G" in file_request:
-        filename = "G.html"
+        FILENAME = "G.html"
     elif "/info/T" in file_request:
-        filename = "T.html"
+        FILENAME = "T.html"
     else:
-        filename = "error.html"
+        FILENAME = "error.html"
 
-    body = read_fasta(FOLDER + filename)
+    body = read_fasta(FOLDER + FILENAME)
 
     # This new contents are written in HTML language
     # -- Status line: We respond that everything is ok (200 code)
