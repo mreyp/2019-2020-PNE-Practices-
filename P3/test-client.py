@@ -11,7 +11,7 @@ PORT = 8080
 
 # -- Create a client object
 c = Client(IP, PORT)
-sequence_test = "ACCTCCTCTCCAGCAATGCCAACCCCAGTCCAGGCCCCCATCCGCCCAGGATCTCGATCA"
+sequence_test = "TGTGAACATTCTGCACAGGTCTCTGGCTGCGCCTGGGCGGGTTTCTT"
 
 print("Connection to SERVER at", IP, ", PORT: ", PORT)
 
@@ -22,8 +22,8 @@ print(c.talk("PING"))
 # TEST GET
 print("\n* Testing GET...")
 for i in range(5):
-    cmd = f"GET {i}"
-    print(f"{cmd}: {c.talk(cmd)}")
+    test = f"GET {i}"
+    print(f"{test}: {c.talk(test)}")
 
 # INFO
 print("* Testing INFO...")

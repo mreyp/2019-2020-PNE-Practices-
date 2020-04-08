@@ -48,6 +48,9 @@ while True:
         # -- We decode it for converting it
         # -- into a human-redeable string
         msg = msg_raw.decode()
+
+        # I find the blank space after the message.
+        # I take from there(not the space) till the end
         argument_command = msg[msg.find(" ") + 1:]
         response = "ERROR"
 
@@ -65,7 +68,7 @@ while True:
             count_bases_string = ""
             for base, count in seq_info.count().items():
                 s_base = str(base) + ": " + str(count) + " (" + str(
-                    round(count / seq_info.len() * 100, 2)) + "%)" + "\n "
+                    round(count / seq_info.len() * 100, 2)) + "%)" + "\n"
                 count_bases_string += s_base
 
             response = ("Sequence: " + str(seq_info) + "\n" +
