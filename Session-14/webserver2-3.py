@@ -59,6 +59,7 @@ with socketserver.TCPServer(("", PORT), Handler) as httpd:
     # -- clint, the handler is called
     try:
         httpd.serve_forever()
+
     except KeyboardInterrupt:
         print("")
         print("Stopped by the user")

@@ -41,7 +41,6 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
             # status code
             status = 200
 
-
         except FileNotFoundError:
             contents = read_file(FOLDER + "error.html")
 

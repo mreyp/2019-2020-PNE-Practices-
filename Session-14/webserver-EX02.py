@@ -9,6 +9,7 @@ def read_file(filename):
     body = "".join(file_contents)
     return body
 
+
 FOLDER = "../Session-14/"
 
 # Define the Server's port
@@ -28,7 +29,6 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
 
         # Print the request line
         termcolor.cprint(self.requestline, 'green')
-
 
         if self.path == "/" or self.path == "/index.html":
             file = "index.html"
