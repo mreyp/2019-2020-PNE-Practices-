@@ -3,11 +3,13 @@ import socketserver
 import termcolor
 from pathlib import Path
 
+
 def read_file(filename):
     # -- Open and read the file
     file_contents = Path(filename).read_text().split("\n")[1:]
     body = "".join(file_contents)
     return body
+
 
 FOLDER = "../P5/"
 
@@ -41,7 +43,6 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
             # status code
             status = 200
 
-
         except FileNotFoundError:
             contents = read_file(FOLDER + "error.html")
 
@@ -51,9 +52,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         # Generating the response message
         self.send_response(status)
 
-
-
-         # Define the content-type header:
+        # Define the content-type header:
         self.send_header('Content-Type', 'text/html')
         self.send_header('Content-Length', len(contents.encode()))
 
