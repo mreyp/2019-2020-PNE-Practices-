@@ -31,7 +31,7 @@ def argument_command(request_line):
     return argument
 
 
-# -- This is for preventing the error: "Port already in use"
+#  Preventing the error: "Port already in use"
 socketserver.TCPServer.allow_reuse_address = True
 
 
@@ -112,7 +112,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
 
                 html_operation = "<h1>Operation:</h1><p>Comp</p>"
                 html_result = "<h1>Result:</h1>" + "<p>" + response_comp + "</p>"
-                color = 'blue'
+                color = 'lightgrey'
 
             elif "rev" == op:
                 seq_rev = Seq(sequence)
