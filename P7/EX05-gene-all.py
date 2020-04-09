@@ -63,7 +63,7 @@ for gene in GENES:
 
     def information(bases):
         seq_info = Seq(bases)
-        min = 0
+        minimum = 0
         freq_base = ""
 
         termcolor.cprint('Total length: ', 'green', end=' ')
@@ -74,8 +74,8 @@ for gene in GENES:
             termcolor.cprint(f"{base}:", 'blue', end=" ")
             print(f" {counter} ({percentage}%)")
 
-            if min < counter:
-                min = counter
+            if minimum < counter:
+                minimum = counter
                 freq_base = base
 
         termcolor.cprint('Most frequent base: ', 'green', end=' ')
