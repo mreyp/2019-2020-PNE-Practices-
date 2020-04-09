@@ -21,15 +21,15 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         # Print the request line
         termcolor.cprint(self.requestline, 'green')
 
-
-
         if self.path == "/":
             contents = Path('form-EX01.html').read_text()
             code = 200
 
-        elif "/echo" == self.path[0:self.path.find("?")]:  # /echo length
-            msg = self.path[self.path.find("=")+1:]  #http://127.0.0.1:8080/echo?msg=hello
-            contents= f"""
+        elif "/echo" == self.path[0:self.path.find("?")]:  # takes everything till '?'
+            # http://127.0.0.1:8080/echo?msg=hello
+            # returns everything from '=' till the end, in this case, 'hello'
+            msg = self.path[self.path.find("=") + 1:]
+            contents = f"""
                        <!DOCTYPE html>
                        <html lang="en" dir="ltr">
                          <head>
