@@ -17,7 +17,6 @@ GENES = {
 }
 
 name = input('Write the gene name: ')
-
 SERVER = 'rest.ensembl.org'
 ENDPOINT = '/sequence/id/'
 PARAMETERS = '?content-type=application/json'
