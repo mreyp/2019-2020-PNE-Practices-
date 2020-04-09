@@ -15,7 +15,7 @@ GENES = {
 
 
 print()
-print("Dictionary of Genes!")
+print("Dictionary of Genes")
 print(f"There are {len(GENES)} genes in the dictionary:\n")
 
 for gene in GENES:
