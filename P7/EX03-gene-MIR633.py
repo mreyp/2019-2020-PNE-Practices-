@@ -16,7 +16,6 @@ GENES = {
 }
 
 gene = 'MIR633'
-
 SERVER = 'rest.ensembl.org'
 ENDPOINT = '/sequence/id/'
 PARAMETERS = '?content-type=application/json'
