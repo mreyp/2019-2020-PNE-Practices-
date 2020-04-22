@@ -1,5 +1,4 @@
 from Seq0 import *
-
 folder = "../Session-04/"
 filename = 'U5.txt'
 
