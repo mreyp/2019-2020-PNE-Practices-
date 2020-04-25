@@ -1,0 +1,420 @@
+BASIC PROGRAM TEST REPORT
+===========================
+
+* TEST 1 :
+
+* INPUT:
+localhost/
+
+* OUTPUT:
+Response received!: 200 OK
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>FINAL PROJECT </title>
+  </head>
+
+  <body style="background-color: lightgreen">
+    <font face="helvetica" size="12" color="brown">Browsing Human and Vertebrates genome</font>
+    <br>
+    <img src="https://st-listas.20minutos.es/images/2014-02/377798/list_640px.jpg?1393549909" width="300" height="200">
+    <h2>BASIC Level Services</h2>
+    <p><b>1) List of species in the genome database :</b></p>
+    <form action ="listSpecies" method="get">
+      <u>Limit</u> : <input type="text" name="limit">
+      <br>
+      <input type="submit" value="GET LIST">
+    </form>
+    <br>
+    <p><b>2) Information about the karyotype :</b></p>
+    <form action="karyotype" method="get">
+      <u>Select the species</u> : <input type="text" name="specie">
+      <br>
+      <input type="submit" value="GET KARYOTYPE">
+    </form>
+    <br>
+    <p><b>3) Chromosome Length :</b></p>
+    <form action="chromosomeLength" method="get">
+      <u>Select the species</u> : <input type="text" name="specie">
+      <br>
+      <br>
+      <u>Select a chromosome</u> : <input type="text" name="chromo">
+      <br>
+      <input type="submit" value="GET LENGTH">
+    </form>
+    <br>
+    <h2>MEDIUM Level Services</h2>
+    <p><b>4) Sequence of a human gene :</b></p>
+    <form action="geneSeq" method="get">
+      <u>Select a gene</u> : <input type="text" name="gene">
+      <br>
+      <input type="submit" value="GET SEQUENCE">
+    </form>
+    <br>
+    <p><b>5) Information about the human gene:</b></p>
+    <form action="geneInfo" method="get">
+      <u>Select a gene</u> : <input type="text" name="gene">
+      <br>
+      <input type="submit" value="GET INFO">
+    </form>
+    <br>
+    <p><b>6) Calculations with the human gene:</b></p>
+    <form action="geneCalc" method="get">
+      <u>Select a gene</u> : <input type="text" name="gene">
+      <br>
+      <input type="submit" value="CALCULATE">
+    </form>
+    <br>
+    <p><b>7) Names of the genes in a determined position of the chromosome:</b></p>
+    <form action="geneList" method="get">
+      <u>Select a chromosome</u> : <input type="text" name="chromo">
+      <br>
+      <br>
+      <u>Select a START point</u> : <input type="text" name="start">
+      <br>
+      <br>
+      <u>Select an ENDING point</u> : <input type="text" name="end">
+      <br>
+      <input type="submit" value="GET GENES">
+    </form>
+    <br>
+  </body>
+</html>
+
+
+
+
+* TEST 2 :
+
+* INPUT:
+localhost/listSpecies?limit=10
+
+* OUTPUT:
+Response received!: 200 OK
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>LIST OF SPECIES</title>
+  </head>
+  <body style="background-color: lightpink;"><p>The total number of species in ensembl is: 267</p><p>The limit you have selected is:10<p/><p>The names of the species are:<p/><ul><li>Sailfin molly</ul></li><ul><li>Japanese medaka HSOK</ul></li><ul><li>Black snub-nosed monkey</ul></li><ul><li>Golden Hamster</ul></li><ul><li>Periophthalmus magnuspinnatus</ul></li><ul><li>Western mosquitofish</ul></li><ul><li>Eastern happy</ul></li><ul><li>Golden snub-nosed monkey</ul></li><ul><li>Great spotted kiwi</ul></li><ul><li>Donkey</ul></li>
+    </body>
+    <body>
+    <a href="http://127.0.0.1:8080/">Main Page </a>
+  </body>
+</html>
+
+
+
+* TEST 3 :
+
+* INPUT:
+localhost/listSpecies?limit=
+
+* OUTPUT:
+Response received!: 200 OK
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>LIST OF SPECIES</title>
+  </head>
+  <body style="background-color: lightpink;"><p>The total number of species in ensembl is: 267</p><p>The names of the species are:<p/><ul><li>Sailfin molly</ul></li><ul><li>Japanese medaka HSOK</ul></li><ul><li>Black snub-nosed monkey</ul></li><ul><li>Golden Hamster</ul></li><ul><li>Periophthalmus magnuspinnatus</ul></li><ul><li>Western mosquitofish</ul></li><ul><li>Eastern happy</ul></li><ul><li>Golden snub-nosed monkey</ul></li><ul><li>Great spotted kiwi</ul></li><ul><li>Donkey</ul></li><ul><li>Hedgehog</ul></li><ul><li>Amazon molly</ul></li><ul><li>Pig - Meishan</ul></li><ul><li>Abingdon island giant tortoise</ul></li><ul><li>Drosophila melanogaster</ul></li><ul><li>Mouse DBA/2J</ul></li><ul><li>Panda</ul></li><ul><li>Marmoset</ul></li><ul><li>Pika</ul></li><ul><li>Mouse WSB/EiJ</ul></li><ul><li>Common carp huanghe</ul></li><ul><li>Spoon-billed sandpiper</ul></li><ul><li>Pig</ul></li><ul><li>Tiger tail seahorse</ul></li><ul><li>Tuatara</ul></li><ul><li>Capuchin</ul></li><ul><li>Pig - Hampshire</ul></li><ul><li>Pig - Rongchang</ul></li><ul><li>Horse</ul></li><ul><li>Long-tailed chinchilla</ul></li><ul><li>Mangrove rivulus</ul></li><ul><li>Ballan wrasse</ul></li><ul><li>Golden-collared manakin</ul></li><ul><li>Pink-footed goose</ul></li><ul><li>Blue tit</ul></li><ul><li>Greater amberjack</ul></li><ul><li>C.savignyi</ul></li><ul><li>Naked mole-rat male</ul></li><ul><li>Midas cichlid</ul></li><ul><li>Agassiz's desert tortoise</ul></li><ul><li>Mouse A/J</ul></li><ul><li>Ryukyu mouse</ul></li><ul><li>Clown anemonefish</ul></li><ul><li>Reedfish</ul></li><ul><li>Makobe Island cichlid</ul></li><ul><li>Sheep</ul></li><ul><li>Platyfish</ul></li><ul><li>American mink</ul></li><ul><li>Painted turtle</ul></li><ul><li>Orange clownfish</ul></li><ul><li>Chinese hamster CHOK1GS</ul></li><ul><li>Mouse CBA/J</ul></li><ul><li>Zebra finch</ul></li><ul><li>Japanese quail</ul></li><ul><li>Mummichog</ul></li><ul><li>Gouldian finch</ul></li><ul><li>Bushbaby</ul></li><ul><li>Dolphin</ul></li><ul><li>Coelacanth</ul></li><ul><li>Leopard</ul></li><ul><li>Elephant shark</ul></li><ul><li>Common wall lizard</ul></li><ul><li>Horned golden-line barbel</ul></li><ul><li>Rat</ul></li><ul><li>Spotted gar</ul></li><ul><li>Lyretail cichlid</ul></li><ul><li>Golden-line barbel</ul></li><ul><li>Hyrax</ul></li><ul><li>Pig - Berkshire</ul></li><ul><li>Spiny chromis</ul></li><ul><li>Tarsier</ul></li><ul><li>Zebra mbuna</ul></li><ul><li>Flycatcher</ul></li><ul><li>Mouse C57BL/6NJ</ul></li><ul><li>Kakapo</ul></li><ul><li>Little spotted kiwi</ul></li><ul><li>Mouse PWK/PhJ</ul></li><ul><li>Channel bull blenny</ul></li><ul><li>Yellowtail amberjack</ul></li><ul><li>Sperm whale</ul></li><ul><li>Budgerigar</ul></li><ul><li>Gibbon</ul></li><ul><li>Fugu</ul></li><ul><li>Japanese medaka HdrR</ul></li><ul><li>Hybrid - Bos Taurus</ul></li><ul><li>Three-toed box turtle</ul></li><ul><li>Chacoan peccary</ul></li><ul><li>Bicolor damselfish</ul></li><ul><li>Barramundi perch</ul></li><ul><li>Cod</ul></li><ul><li>Coquerel's sifaka</ul></li><ul><li>Ferret</ul></li><ul><li>Denticle herring</ul></li><ul><li>Pig - Tibetan</ul></li><ul><li>Chinese hamster CriGri</ul></li><ul><li>Chicken</ul></li><ul><li>Tiger</ul></li><ul><li>Common canary</ul></li><ul><li>Okarito brown kiwi</ul></li><ul><li>Swamp eel</ul></li><ul><li>Upper Galilee mountains blind mole rat</ul></li><ul><li>Bengalese finch</ul></li><ul><li>Ugandan red Colobus</ul></li><ul><li>Canada lynx</ul></li><ul><li>Hagfish</ul></li><ul><li>Crab-eating macaque</ul></li><ul><li>Blue-crowned manakin</ul></li><ul><li>Emu</ul></li><ul><li>Komodo dragon</ul></li><ul><li>Pig-tailed macaque</ul></li><ul><li>Pig - Pietrain</ul></li><ul><li>Tree Shrew</ul></li><ul><li>Squirrel</ul></li><ul><li>Shrew</ul></li><ul><li>Tasmanian devil</ul></li><ul><li>Tropical clawed frog</ul></li><ul><li>Ocean sunfish</ul></li><ul><li>Mouse NOD/ShiLtJ</ul></li><ul><li>Sloth</ul></li><ul><li>Australian saltwater crocodile</ul></li><ul><li>Channel catfish</ul></li><ul><li>Koala</ul></li><ul><li>Gelada</ul></li><ul><li>Indian medaka</ul></li><ul><li>Caenorhabditis elegans</ul></li><ul><li>Goat</ul></li><ul><li>Northern pike</ul></li><ul><li>Indian glassy fish</ul></li><ul><li>Elephant</ul></li><ul><li>Sheepshead minnow</ul></li><ul><li>Common wombat</ul></li><ul><li>Cow</ul></li><ul><li>Mouse CAST/EiJ</ul></li><ul><li>Electric eel</ul></li><ul><li>Mouse BALB/cJ</ul></li><ul><li>Prairie vole</ul></li><ul><li>Daurian ground squirrel</ul></li><ul><li>Mouse 129S1/SvImJ</ul></li><ul><li>Mainland tiger snake</ul></li><ul><li>Common carp hebao red</ul></li><ul><li>Angola colobus</ul></li><ul><li>American bison</ul></li><ul><li>Meerkat</ul></li><ul><li>Asian bonytongue</ul></li><ul><li>Nile tilapia</ul></li><ul><li>Eurasian sparrowhawk</ul></li><ul><li>Yellow-billed parrot</ul></li><ul><li>Lesser hedgehog tenrec</ul></li><ul><li>Alpaca</ul></li><ul><li>Algerian mouse</ul></li><ul><li>Mouse C3H/HeJ</ul></li><ul><li>Human</ul></li><ul><li>Mouse</ul></li><ul><li>Argentine black and white tegu</ul></li><ul><li>Orbiculate cardinalfish</ul></li><ul><li>Chinese softshell turtle</ul></li><ul><li>Dog</ul></li><ul><li>Zebrafish</ul></li><ul><li>Dog - Basenji</ul></li><ul><li>Siamese fighting fish</ul></li><ul><li>Cat</ul></li><ul><li>Blunt-snouted clingfish</ul></li><ul><li>Jewelled blenny</ul></li><ul><li>Ruff</ul></li><ul><li>Pig USMARC</ul></li><ul><li>Atlantic salmon</ul></li><ul><li>Orangutan</ul></li><ul><li>Degu</ul></li><ul><li>Gilthead seabream</ul></li><ul><li>Alpine marmot</ul></li><ul><li>Blind barbel</ul></li><ul><li>Eastern brown snake</ul></li><ul><li>Huchen</ul></li><ul><li>Round goby</ul></li><ul><li>Chinese hamster PICR</ul></li><ul><li>Red fox</ul></li><ul><li>Dingo</ul></li><ul><li>Brazilian guinea pig</ul></li><ul><li>Pig - Jinhua</ul></li><ul><li>Microbat</ul></li><ul><li>Ma's night monkey</ul></li><ul><li>Rabbit</ul></li><ul><li>Monterrey platyfish</ul></li><ul><li>Macaque</ul></li><ul><li>Turkey</ul></li><ul><li>Guinea Pig</ul></li><ul><li>Swan goose</ul></li><ul><li>Greater bamboo lemur</ul></li><ul><li>Polar bear</ul></li><ul><li>Duck</ul></li><ul><li>Gorilla</ul></li><ul><li>Naked mole-rat female</ul></li><ul><li>Vervet-AGM</ul></li><ul><li>Mouse LP/J</ul></li><ul><li>Tongue sole</ul></li><ul><li>Bolivian squirrel monkey</ul></li><ul><li>Opossum</ul></li><ul><li>Japanese medaka HNI</ul></li><ul><li>C.intestinalis</ul></li><ul><li>Mongolian gerbil</ul></li><ul><li>Chimpanzee</ul></li><ul><li>Burton's mouthbrooder</ul></li><ul><li>Indian peafowl</ul></li><ul><li>Red-bellied piranha</ul></li><ul><li>Pig - Wuzhishan</ul></li><ul><li>Lesser Egyptian jerboa</ul></li><ul><li>Shrew mouse</ul></li><ul><li>Lamprey</ul></li><ul><li>Greater horseshoe bat</ul></li><ul><li>Olive baboon</ul></li><ul><li>Armadillo</ul></li><ul><li>Dog - Great Dane</ul></li><ul><li>Arabian camel</ul></li><ul><li>Pig - Largewhite</ul></li><ul><li>Dark-eyed junco</ul></li><ul><li>River trout</ul></li><ul><li>Guppy</ul></li><ul><li>Large yellow croaker</ul></li><ul><li>Mouse AKR/J</ul></li><ul><li>Chilean tinamou</ul></li><ul><li>Mouse NZO/HlLtJ</ul></li><ul><li>Mouse Lemur</ul></li><ul><li>Mouse FVB/NJ</ul></li><ul><li>Great Tit</ul></li><ul><li>Saccharomyces cerevisiae</ul></li><ul><li>Blue tilapia</ul></li><ul><li>Wallaby</ul></li><ul><li>Golden eagle</ul></li><ul><li>Siberian musk deer</ul></li><ul><li>Drill</ul></li><ul><li>Bonobo</ul></li><ul><li>Pig - Landrace</ul></li><ul><li>Central bearded dragon</ul></li><ul><li>Pachon cavefish</ul></li><ul><li>Paramormyrops kingsleyae</ul></li><ul><li>Kangaroo rat</ul></li><ul><li>Helmeted guineafowl</ul></li><ul><li>Wild yak</ul></li><ul><li>Climbing perch</ul></li><ul><li>Tetraodon</ul></li><ul><li>Hybrid - Bos Indicus</ul></li><ul><li>Megabat</ul></li><ul><li>Pinecone soldierfish</ul></li><ul><li>Pig - Bamei</ul></li><ul><li>Ring-necked pheasant</ul></li><ul><li>Golden pheasant</ul></li><ul><li>Platypus</ul></li><ul><li>Mexican tetra</ul></li><ul><li>Arctic ground squirrel</ul></li><ul><li>African ostrich</ul></li><ul><li>Damara mole rat</ul></li><ul><li>Common carp german mirror</ul></li><ul><li>American black bear</ul></li><ul><li>Turbot</ul></li><ul><li>Anole lizard</ul></li><ul><li>Zig-zag eel</ul></li><ul><li>Stickleback</ul></li><ul><li>Burrowing owl</ul></li><ul><li>Northern American deer mouse</ul></li><ul><li>White-throated sparrow</ul></li><ul><li>American beaver</ul></li><ul><li>Domestic yak</ul></li><ul><li>Sooty mangabey</ul></li><ul><li>Steppe mouse</ul></li><ul><li>Shortfin molly</ul></li><ul><li>Live sharksucker</ul></li><ul><li>Atlantic herring</ul></li>
+    </body>
+    <body>
+    <a href="http://127.0.0.1:8080/">Main Page </a>
+  </body>
+</html>
+
+
+
+* TEST 4 :
+
+* INPUT:
+localhost/listSpecies?limit=0
+
+* OUTPUT:
+Response received!: 200 OK
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>LIST OF SPECIES</title>
+  </head>
+  <body style="background-color: lightpink;"><p>The total number of species in ensembl is: 267</p><p>The limit you have selected is:0<p/><p>The names of the species are:<p/>
+    </body>
+    <body>
+    <a href="http://127.0.0.1:8080/">Main Page </a>
+  </body>
+</html>
+
+
+
+* TEST 5 :
+
+* INPUT:
+localhost/listSpecies?limit=wrong
+
+* OUTPUT:
+Response received!: 400 Bad Request
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ERROR</title>
+</head>
+<body style="background-color: red;">
+    <h1>ERROR</h1>
+    <p>SORRY. The limit you have entered is out of range</p>
+    <p>Try again with a correct limit</p>
+    <a href="/">Main page</a>
+</body>
+</html>
+
+
+* TEST 6 :
+
+* INPUT:
+localhost/listSpecies?limit=400
+
+* OUTPUT:
+Response received!: 400 Bad Request
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ERROR</title>
+</head>
+<body style="background-color: red;">
+    <h1>ERROR</h1>
+    <p>SORRY. The limit you have entered is out of range</p>
+    <p>Try again with a correct limit</p>
+    <a href="/">Main page</a>
+</body>
+</html>
+
+
+* TEST 7 :
+
+* INPUT:
+localhost/karyotype?specie=mouse
+
+* OUTPUT:
+Response received!: 200 OK
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>INFORMATION ABOUT KARYOTYPE</title>
+  </head>
+  <body style="background-color: lightsalmon;"><h3> The names of the chromosomes of the mouse specie are:</h3><p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p><p>7</p><p>8</p><p>9</p><p>10</p><p>11</p><p>12</p><p>13</p><p>14</p><p>15</p><p>16</p><p>17</p><p>18</p><p>19</p><p>X</p><p>Y</p><p>MT</p>
+    </body>
+    <body>
+    <a href="http://127.0.0.1:8080/">Main Page </a>
+  </body>
+</html>
+
+
+
+* TEST 8 :
+
+* INPUT:
+localhost/karyotype?specie=human
+
+* OUTPUT:
+Response received!: 200 OK
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>INFORMATION ABOUT KARYOTYPE</title>
+  </head>
+  <body style="background-color: lightsalmon;"><h3> The names of the chromosomes of the human specie are:</h3><p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p><p>7</p><p>8</p><p>9</p><p>10</p><p>11</p><p>12</p><p>13</p><p>14</p><p>15</p><p>16</p><p>17</p><p>18</p><p>19</p><p>20</p><p>21</p><p>22</p><p>X</p><p>Y</p><p>MT</p>
+    </body>
+    <body>
+    <a href="http://127.0.0.1:8080/">Main Page </a>
+  </body>
+</html>
+
+
+
+* TEST 9 :
+
+* INPUT:
+localhost/karyotype?specie=homo+sapiens
+
+* OUTPUT:
+Response received!: 200 OK
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>INFORMATION ABOUT KARYOTYPE</title>
+  </head>
+  <body style="background-color: lightsalmon;"><h3> The names of the chromosomes of the homo_sapiens specie are:</h3><p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p><p>7</p><p>8</p><p>9</p><p>10</p><p>11</p><p>12</p><p>13</p><p>14</p><p>15</p><p>16</p><p>17</p><p>18</p><p>19</p><p>20</p><p>21</p><p>22</p><p>X</p><p>Y</p><p>MT</p>
+    </body>
+    <body>
+    <a href="http://127.0.0.1:8080/">Main Page </a>
+  </body>
+</html>
+
+
+
+* TEST 10 :
+
+* INPUT:
+localhost/karyotype?specie=coronavirus
+
+* OUTPUT:
+Response received!: 400 Bad Request
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ERROR</title>
+</head>
+<body style="background-color: red;">
+    <h1>ERROR</h1>
+    <p>SORRY. The data you have entered does not exist in the ensembl</p>
+    <p>Try again with an existent data</p>
+    <a href="/">Main page</a>
+</body>
+</html>
+
+
+* TEST 11 :
+
+* INPUT:
+localhost/chromosomeLength?specie=mouse&chromo=1
+
+* OUTPUT:
+Response received!: 200 OK
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>LENGTH OF CHROMOSOME</title>
+  </head>
+  <body style="background-color: lightblue;"><p> The length of the chromosome 1 of the mouse specie is: 195471971</p>
+    </body>
+    <body>
+    <a href="http://127.0.0.1:8080/">Main Page </a>
+  </body>
+</html>
+
+
+
+* TEST 12 :
+
+* INPUT:
+localhost/chromosomeLength?specie=homo+sapiens&chromo=1
+
+* OUTPUT:
+Response received!: 200 OK
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>LENGTH OF CHROMOSOME</title>
+  </head>
+  <body style="background-color: lightblue;"><p> The length of the chromosome 1 of the homo_sapiens specie is: 248956422</p>
+    </body>
+    <body>
+    <a href="http://127.0.0.1:8080/">Main Page </a>
+  </body>
+</html>
+
+
+
+* TEST 13 :
+
+* INPUT:
+localhost/chromosomeLength?specie=mouse&chromo=abc
+
+* OUTPUT:
+Response received!: 400 Bad Request
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ERROR</title>
+</head>
+<body style="background-color: red;">
+    <h1>ERROR</h1>
+    <p>SORRY. The data you have entered does not exist in the ensembl</p>
+    <p>Try again with an existent data</p>
+    <a href="/">Main page</a>
+</body>
+</html>
+
+
+* TEST 14 :
+
+* INPUT:
+localhost/chromosomeLength?specie=coronavirus&chromo=1
+
+* OUTPUT:
+Response received!: 400 Bad Request
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ERROR</title>
+</head>
+<body style="background-color: red;">
+    <h1>ERROR</h1>
+    <p>SORRY. The data you have entered does not exist in the ensembl</p>
+    <p>Try again with an existent data</p>
+    <a href="/">Main page</a>
+</body>
+</html>
+
+
+* TEST 15 :
+
+* INPUT:
+localhost/error
+
+* OUTPUT:
+Response received!: 404 Not Found
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ERROR</title>
+</head>
+<body style="background-color: red;">
+    <h1>ERROR</h1>
+    <p>Resource not available</p>
+    <p></p>
+    <a href="/">Main page</a>
+</body>
+</html>
+
+
+Process finished with exit code 0
