@@ -30,7 +30,7 @@ frag7 = "Fragment 7: "
 frag8 = "Fragment 8: "
 frag9 = "Fragment 9: "
 frag10 = "Fragment 10: "
-fragments = [frag1, frag2, frag3, frag4, frag5,frag6, frag7, frag8, frag9, frag10]
+fragments = [frag1, frag2, frag3, frag4, frag5, frag6, frag7, frag8, frag9, frag10]
 
 i = 0
 f = 0
