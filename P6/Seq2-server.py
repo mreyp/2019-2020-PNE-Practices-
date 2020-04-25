@@ -27,7 +27,7 @@ def html_response(title="", body="", color='white'):
 
 
 def argument_command(request_line):
-    argument = request_line[request_line.find("=") + 1:]    #devuelve lo q hay despues del =
+    argument = request_line[request_line.find("=") + 1:]    # Devuelve lo q hay después del =
     return argument
 
 
@@ -53,7 +53,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
 
         elif "/ping" in self.path:
             html = "<h1>PING OK!</h1><p>The SEQ2 server is running...</p>"
-            contents = html_response("PING", html, 'orange')  #en title va PING y en body el resto
+            contents = html_response("PING", html, 'orange')  # En title va PING y en body el resto
             error = 200
 
         elif "/get" in self.path:
@@ -129,7 +129,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
             error = 200
 
         else:
-            file = "Error.html"
+            file = "Error-1.html"
             contents = Path(file).read_text()
             self.send_response(404)  # -- Status line: ERROR NOT FOUND
 
@@ -164,5 +164,5 @@ with socketserver.TCPServer(("", PORT), Handler) as httpd:
         httpd.serve_forever()
     except KeyboardInterrupt:
         print("")
-        print("Stoped by the user")
+        print("Stopped by the user")
         httpd.server_close()
