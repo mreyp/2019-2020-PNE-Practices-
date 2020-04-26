@@ -8,7 +8,7 @@ print(f"-----| Practice {PRACTICE}, Exercise {EXERCISE} |------")
 
 # -- Parameters
 IP = "1192.168.1.58"
-PORT = 8080
+PORT1 = 8080
 PORT2 = 8082
 FOLDER = "../Session-04/"
 filename = FOLDER + 'FRAT1.txt'
@@ -42,13 +42,13 @@ while f < len(fragments):
         f += 1
 
 # connect
-c = Client(IP, PORT)
+c1 = Client(IP, PORT1)
 c2 = Client(IP, PORT2)
 
 x = 0
 while x < len(fragments):
     if x % 2 == 0 or x == 0:
-        c.talk(fragments[x])
+        c1.talk(fragments[x])
     else:
         c2.talk(fragments[x])
 

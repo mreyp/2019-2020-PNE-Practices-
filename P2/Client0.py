@@ -20,7 +20,7 @@ class Client:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         # establish the connection to the Server (IP, PORT)
         s.connect((self.ip, self.port))
-        # Send data.
+        # Send data
         s.send(str.encode(str(msg)))
         # Receive data
         response = s.recv(2048).decode("utf-8")
