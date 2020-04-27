@@ -293,7 +293,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         elif resource == "/geneSeq":
             try:
                 pairs = self.path.find('=')
-                arg = self.path[pairs + 1:]  # take just the name of the gene
+                arg = self.path[pairs + 1:]  # Take just the name of the gene
 
                 if '&' in arg:
                     argument = arg.split('&')
@@ -329,11 +329,11 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
             try:
                 ENDPOINT = '/lookup/id/'
                 pairs = self.path.find('=')
-                arg = self.path[pairs + 1:]  # take just the name of the gene
+                arg = self.path[pairs + 1:]
 
                 if '&' in arg:
                     argument = arg.split('&')
-                    gene = argument[0]
+                    gene = argument[0]    # Take just the name of the gene
 
                 else:
                     gene = arg
@@ -390,11 +390,11 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         elif resource == "/geneCalc":
             try:
                 pairs = self.path.find('=')
-                arg = self.path[pairs + 1:]  # take just the name of the gene
+                arg = self.path[pairs + 1:]
 
                 if '&' in arg:
                     argument = arg.split('&')
-                    gene = argument[0]
+                    gene = argument[0]    # Take just the name of the gene
 
                 else:
                     gene = arg
