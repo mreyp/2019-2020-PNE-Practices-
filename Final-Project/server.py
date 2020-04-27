@@ -143,14 +143,14 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                         for specie in species:
                             SPECIE = specie['display_name']
                             li_specie.append(SPECIE)
-                            d_json = {'species': li_specie}
+                            d_json = {'Species': li_specie}
                             contents = json.dumps(d_json)  # Convert into JSON
 
                     else:
                         while counter < int(limit):
                             SPECIE = species[counter]['display_name']
                             li_specie.append(SPECIE)
-                            d_json = {'species': li_specie}
+                            d_json = {'Species': li_specie}
                             contents = json.dumps(d_json)  # Convert into JSON
                             counter += 1
 
