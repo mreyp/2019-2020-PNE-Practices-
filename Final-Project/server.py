@@ -143,15 +143,15 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                         for specie in species:
                             SPECIE = specie['display_name']
                             li_specie.append(SPECIE)
-                            dict_json = {'species': li_specie}
-                            contents = json.dumps(dict_json)  # Convert into JSON
+                            d_json = {'species': li_specie}
+                            contents = json.dumps(d_json)  # Convert into JSON
 
                     else:
                         while counter < int(limit):
                             SPECIE = species[counter]['display_name']
                             li_specie.append(SPECIE)
-                            dict_json = {'species': li_specie}
-                            contents = json.dumps(dict_json)  # Convert into JSON
+                            d_json = {'species': li_specie}
+                            contents = json.dumps(d_json)  # Convert into JSON
                             counter += 1
 
                 else:
@@ -224,8 +224,8 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                     l_kary = []
                     for chrom in kary:
                         l_kary.append(chrom)
-                        dict_json = {'Species': arg, 'Chromosomes': l_kary}
-                        contents = json.dumps(dict_json)  # convert into JSON
+                        d_json = {'Species': arg, 'Chromosomes': l_kary}
+                        contents = json.dumps(d_json)  # convert into JSON
 
                 else:
                     html = f"<h3> The names of the chromosomes of the {specie} specie are:</h3>"
@@ -275,8 +275,8 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 info = json.loads(data1)
 
                 if 'json=1' in arguments[1]:
-                    dict_json = {'Specie': specie, 'Chromosome': chromosome, 'Length': info['length']}
-                    contents = json.dumps(dict_json)
+                    d_json = {'Specie': specie, 'Chromosome': chromosome, 'Length': info['length']}
+                    contents = json.dumps(d_json)
                 else:
 
                     html = f"<p> The length of the chromosome {chromosome}" \
@@ -308,8 +308,8 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 print(f"URL: {URL}")
 
                 if 'json=1' in arguments[1]:
-                    dict_json = {'Gene name': gene, 'Sequence': sequence}
-                    contents = json.dumps(dict_json)
+                    d_json = {'Gene name': gene, 'Sequence': sequence}
+                    contents = json.dumps(d_json)
                 else:
                     html = f"<p> The sequence of the {gene} gene is: </p>"
                     html += f"<p><textarea readonly rows = '35' cols = '80'>{sequence}</textarea></p>"
@@ -363,10 +363,10 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
 
                 if 'json=1' in arguments[1]:
 
-                    dict_json = {'Gene': gene, 'Starting point': info['start'], 'Ending point': info['end'],
+                    d_json = {'Gene': gene, 'Starting point': info['start'], 'Ending point': info['end'],
                                  'Length': seq.len(), 'ID': info['id'],
                                  'Chromosome': info['seq_region_name']}
-                    contents = json.dumps(dict_json)
+                    contents = json.dumps(d_json)
 
                 else:
                     html = f"<h3>Information about the {gene} gene:</h3>"
@@ -412,8 +412,8 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                         calculation =f" {base}: {round(seq.count_base(base) * (100 / seq.len()), 2)}%"
                         list_bases.append(calculation)
 
-                    dict_json = {'Length': seq.len(), 'Percentage of bases': list_bases}
-                    contents = json.dumps(dict_json)
+                    d_json = {'Length': seq.len(), 'Percentage of bases': list_bases}
+                    contents = json.dumps(d_json)
 
                 else:
                     html = f"<p> The length is : {seq.len()}</p>"
@@ -466,9 +466,9 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                     li_species =[]
                     for gene in info:
                         li_species.append(gene['external_name'])
-                    dict_json = {'Chromosome chosen': chromosome, 'Starting point': start,
+                    d_json = {'Chromosome chosen': chromosome, 'Starting point': start,
                                  'Ending point': end, 'Genes': li_species}
-                    contents = json.dumps(dict_json)
+                    contents = json.dumps(d_json)
 
                 else:
                     html = f"<p>The genes that are in the chromosome {chromosome} " \
