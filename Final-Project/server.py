@@ -333,7 +333,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
 
                 if '&' in arg:
                     argument = arg.split('&')
-                    gene = argument[0]    # Take just the name of the gene
+                    gene = argument[0]  # Take just the name of the gene
 
                 else:
                     gene = arg
@@ -364,8 +364,8 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 if 'json=1' in arguments[1]:
 
                     d_json = {'Gene': gene, 'Starting point': info['start'], 'Ending point': info['end'],
-                                 'Length': seq.len(), 'ID': info['id'],
-                                 'Chromosome': info['seq_region_name']}
+                              'Length': seq.len(), 'ID': info['id'],
+                              'Chromosome': info['seq_region_name']}
                     contents = json.dumps(d_json)
 
                 else:
@@ -394,7 +394,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
 
                 if '&' in arg:
                     argument = arg.split('&')
-                    gene = argument[0]    # Take just the name of the gene
+                    gene = argument[0]  # Take just the name of the gene
 
                 else:
                     gene = arg
@@ -407,9 +407,9 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 bases = ['A', 'C', 'T', 'G']
 
                 if 'json=1' in arguments[1]:
-                    list_bases =[]
+                    list_bases = []
                     for base in bases:
-                        calculation =f" {base}: {round(seq.count_base(base) * (100 / seq.len()), 2)}%"
+                        calculation = f" {base}: {round(seq.count_base(base) * (100 / seq.len()), 2)}%"
                         list_bases.append(calculation)
 
                     d_json = {'Length': seq.len(), 'Percentage of bases': list_bases}
@@ -463,11 +463,11 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 info = json.loads(data1)
 
                 if 'json=1' in arguments[1]:
-                    li_species =[]
+                    li_species = []
                     for gene in info:
                         li_species.append(gene['external_name'])
                     d_json = {'Chromosome chosen': chromosome, 'Starting point': start,
-                                 'Ending point': end, 'Genes': li_species}
+                              'Ending point': end, 'Genes': li_species}
                     contents = json.dumps(d_json)
 
                 else:
