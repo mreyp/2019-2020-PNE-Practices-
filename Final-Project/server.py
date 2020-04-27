@@ -17,7 +17,7 @@ conn = http.client.HTTPConnection(HOSTNAME)
 # -- This is for preventing the error: "Port already in use"
 socketserver.TCPServer.allow_reuse_address = True
 
-
+# -- Create a function for our general HTML response, we will personalize it in each option
 def html_response(title="", body="", color='white'):
     default_body = f"""
 <!DOCTYPE html>
@@ -35,7 +35,7 @@ def html_response(title="", body="", color='white'):
 """
     return default_body
 
-
+# -- Function to obtain the ID of a specie
 def gene_seq(gene):
     connection = http.client.HTTPConnection(HOSTNAME)
     ENDPOINT1 = '/xrefs/symbol/human/'
@@ -59,7 +59,7 @@ def gene_seq(gene):
     id_gene = info['id']
     return id_gene
 
-
+# -- Function to obtain the sequence of a given specie ID
 def get_seq(id_gene):
     connection = http.client.HTTPConnection(HOSTNAME)
     ENDPOINT1 = '/sequence/id/'
@@ -97,7 +97,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         # Divide the request line to get the info
         arguments = self.path.split('?')
 
-        # First part
+        # First part of the arguments
         resource = arguments[0]
 
         if resource == "/":
@@ -134,7 +134,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 species = info['species']
 
                 if 'json=1' in arguments[1]:
-                    li_specie = []
+                    li_specie = []                   # Create a list where appending all the species
                     separate = self.path.split('&')  # Separate the specie from the json=1
                     pairs = separate[0].find('=')
                     limit = separate[0][pairs + 1:]  # Take just the number of limit
@@ -156,7 +156,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
 
                 else:
                     pairs = self.path.find('=')
-                    limit = self.path[pairs + 1:]  # take just the number of limit
+                    limit = self.path[pairs + 1:]  # Take just the number of limit
 
                     html = f"<p>The total number of species in ensembl is: {len(species)}</p>"
 
@@ -171,7 +171,6 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                         while counter < int(limit):
                             html += f"<ul><li>{species[counter]['display_name']}</ul></li>"
                             counter += 1
-
                     contents = html_response("LIST OF SPECIES", html, 'lightpink')
                 code = 200
 
@@ -187,15 +186,15 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
             try:
                 ENDPOINT = '/info/assembly/'
                 pairs = self.path.find('=')
-                specie = self.path[pairs + 1:]  # take just the name of the specie
+                specie = self.path[pairs + 1:]
                 if '+' in specie:
                     specie = specie.replace("+", "_")
-                if '&' in specie:
+                if '&' in specie:                     # (When json=1 appears)
                     argument = specie.split('&')
-                    arg = argument[0]
-
+                    arg = argument[0]                 # Take just the name of the specie
                 else:
                     arg = specie
+
                 NEW_PARAMETERS = arg + PARAMETERS
                 URL = HOSTNAME + ENDPOINT + arg + PARAMETERS
                 print(f"URL: {URL}")
@@ -221,18 +220,17 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 kary = info['karyotype']
 
                 if 'json=1' in arguments[1]:
-                    l_kary = []
+                    l_kary = []              # Create a list where appending all the chromosomes of the karyotype
                     for chrom in kary:
                         l_kary.append(chrom)
                         d_json = {'Species': arg, 'Chromosomes': l_kary}
-                        contents = json.dumps(d_json)  # convert into JSON
+                        contents = json.dumps(d_json)  # Convert into JSON
 
                 else:
                     html = f"<h3> The names of the chromosomes of the {specie} specie are:</h3>"
 
                     for chromosome in kary:
                         html += f"<p>{chromosome}</p>"
-
                     contents = html_response("INFORMATION ABOUT KARYOTYPE", html, 'lightsalmon')
                 code = 200
 
@@ -243,9 +241,9 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         elif resource == "/chromosomeLength":
             try:
                 ENDPOINT = '/info/assembly/'
-                separate = self.path.split('&')  # Separate the specie from the chromosome
+                separate = self.path.split('&')       # Separate the specie from the chromosome
                 pairs = separate[0].find('=')
-                specie = separate[0][pairs + 1:]
+                specie = separate[0][pairs + 1:]      # Take just the name of the specie
                 if '+' in specie:
                     specie = specie.replace("+", "_")
                 pairs2 = separate[1].find('=')
@@ -278,12 +276,9 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                     d_json = {'Specie': specie, 'Chromosome': chromosome, 'Length': info['length']}
                     contents = json.dumps(d_json)
                 else:
-
                     html = f"<p> The length of the chromosome {chromosome}" \
                            f" of the {specie} specie is: {info['length']}</p>"
-
                     contents = html_response("LENGTH OF CHROMOSOME", html, 'lightblue')
-
                 code = 200
 
             except KeyError:
@@ -293,14 +288,14 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         elif resource == "/geneSeq":
             try:
                 pairs = self.path.find('=')
-                arg = self.path[pairs + 1:]  # Take just the name of the gene
+                arg = self.path[pairs + 1:]
 
-                if '&' in arg:
+                if '&' in arg:                 # (When json=1 appears)
                     argument = arg.split('&')
-                    gene = argument[0]
-
+                    gene = argument[0]         # Take just the name of the gene
                 else:
                     gene = arg
+
                 GENE = gene_seq(gene)
                 sequence = get_seq(GENE)
                 NEW_PARAMETERS = GENE + PARAMETERS
@@ -309,12 +304,11 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
 
                 if 'json=1' in arguments[1]:
                     d_json = {'Gene name': gene, 'Sequence': sequence}
-                    contents = json.dumps(d_json)
+                    contents = json.dumps(d_json)  # Convert into JSON
                 else:
                     html = f"<p> The sequence of the {gene} gene is: </p>"
                     html += f"<p><textarea readonly rows = '35' cols = '80'>{sequence}</textarea></p>"
                     contents = html_response("SEQUENCE OF A HUMAN GENE", html, 'yellow')
-
                 code = 200
 
             except IndexError:
@@ -331,9 +325,9 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 pairs = self.path.find('=')
                 arg = self.path[pairs + 1:]
 
-                if '&' in arg:
+                if '&' in arg:                     # (When json=1 appears)
                     argument = arg.split('&')
-                    gene = argument[0]  # Take just the name of the gene
+                    gene = argument[0]             # Take just the name of the gene
 
                 else:
                     gene = arg
@@ -366,7 +360,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                     d_json = {'Gene': gene, 'Starting point': info['start'], 'Ending point': info['end'],
                               'Length': seq.len(), 'ID': info['id'],
                               'Chromosome': info['seq_region_name']}
-                    contents = json.dumps(d_json)
+                    contents = json.dumps(d_json)  # Convert into JSON
 
                 else:
                     html = f"<h3>Information about the {gene} gene:</h3>"
@@ -392,9 +386,9 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 pairs = self.path.find('=')
                 arg = self.path[pairs + 1:]
 
-                if '&' in arg:
+                if '&' in arg:                 # (When json=1 appears)
                     argument = arg.split('&')
-                    gene = argument[0]  # Take just the name of the gene
+                    gene = argument[0]         # Take just the name of the gene
 
                 else:
                     gene = arg
@@ -407,13 +401,13 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 bases = ['A', 'C', 'T', 'G']
 
                 if 'json=1' in arguments[1]:
-                    list_bases = []
+                    list_bases = []       # Create a list where appending all the calculations for the different bases
                     for base in bases:
                         calculation = f" {base}: {round(seq.count_base(base) * (100 / seq.len()), 2)}%"
                         list_bases.append(calculation)
 
                     d_json = {'Length': seq.len(), 'Percentage of bases': list_bases}
-                    contents = json.dumps(d_json)
+                    contents = json.dumps(d_json)   # Convert into JSON
 
                 else:
                     html = f"<p> The length is : {seq.len()}</p>"
@@ -431,13 +425,13 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         elif resource == "/geneList":
             try:
                 ENDPOINT = '/overlap/region/human/'
-                separate = self.path.split('&')  # Separate chromosome from start-end
+                separate = self.path.split('&')       # Separate chromosome from start-end
                 pairs = separate[0].find('=')
                 chromosome = separate[0][pairs + 1:]  # Take just the name of chromosome
                 pairs2 = separate[1].find('=')
-                start = separate[1][pairs2 + 1:]  # Take just the number of start
+                start = separate[1][pairs2 + 1:]      # Take just the number of start
                 pairs3 = separate[2].find('=')
-                end = separate[2][pairs3 + 1:]  # Take just the number of ending
+                end = separate[2][pairs3 + 1:]        # Take just the number of ending
                 PARAMETER = 'content-type=application/json'
                 NEW_PARAMETERS = chromosome + ':' + start + '-' + end + '?' + 'feature=gene;' + PARAMETER
                 URL = HOSTNAME + ENDPOINT + NEW_PARAMETERS
@@ -463,12 +457,12 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 info = json.loads(data1)
 
                 if 'json=1' in arguments[1]:
-                    li_species = []
+                    li_genes = []    # Create a list where appending all the genes
                     for gene in info:
-                        li_species.append(gene['external_name'])
+                        li_genes.append(gene['external_name'])
                     d_json = {'Chromosome chosen': chromosome, 'Starting point': start,
-                              'Ending point': end, 'Genes': li_species}
-                    contents = json.dumps(d_json)
+                              'Ending point': end, 'Genes': li_genes}
+                    contents = json.dumps(d_json)  # Convert into JSON
 
                 else:
                     html = f"<p>The genes that are in the chromosome {chromosome} " \
@@ -490,10 +484,10 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
 
         self.send_response(code)
 
-        if 'json=1' in resource:
+        if 'json=1' in resource:    # JSON type
             self.send_header('Content-Type', 'application/json')
 
-        else:
+        else:   # HTML type
             self.send_header('Content-Type', 'text/html')
 
         self.send_header('Content-Length', len(str.encode(contents)))
