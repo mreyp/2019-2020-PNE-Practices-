@@ -135,7 +135,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
 
                 if 'json=1' in arguments[1]:
                     li_specie = []
-                    separate = self.path.split('&')  # Separate the limit from the json=1
+                    separate = self.path.split('&')  # Separate the specie from the json=1
                     pairs = separate[0].find('=')
                     limit = separate[0][pairs + 1:]  # Take just the number of limit
 
