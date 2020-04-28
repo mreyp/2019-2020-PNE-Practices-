@@ -16,7 +16,7 @@ for ENDPOINT in endpoints:
     URL = SERVER + ENDPOINT
 
     print()
-    print('* TEST', counter ,':\n')
+    print('* TEST', counter,':\n')
     print('* INPUT: ')
     print(URL, '\n')
     print('* OUTPUT: ')
