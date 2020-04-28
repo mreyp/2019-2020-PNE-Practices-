@@ -95,8 +95,11 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         termcolor.cprint(self.requestline, 'green')
 
         # Divide the request line to get the info
-        arguments = self.path.split('?')
+        if '?' in self.path:
+            arguments = self.path.split('?')
 
+        else:
+            arguments = [self.path]
         # First part of the arguments
         resource = arguments[0]
 
@@ -133,13 +136,13 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 # Take the data of the species
                 species = info['species']
 
-                if 'json=1' in arguments[1]:
+                if 'json=1' in self.path:
                     li_specie = []                   # Create a list where appending all the species
                     separate = self.path.split('&')  # Separate the specie from the json=1
                     pairs = separate[0].find('=')
                     limit = separate[0][pairs + 1:]  # Take just the number of limit
 
-                    if limit == "":
+                    if 'limit=' not in self.path or limit == "":
                         for specie in species:
                             SPECIE = specie['display_name']
                             li_specie.append(SPECIE)
@@ -156,11 +159,10 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
 
                 else:
                     pairs = self.path.find('=')
-                    limit = self.path[pairs + 1:]  # Take just the number of limit
-
+                    limit = self.path[pairs + 1:]
                     html = f"<p>The total number of species in ensembl is: {len(species)}</p>"
 
-                    if limit == "":
+                    if len(arguments)==1 or 'limit=' not in self.path or limit == "":
                         html += f"<p>The names of the species are:<p/>"
                         for specie in species:
                             html += f"<ul><li>{specie['display_name']}</ul></li>"
@@ -219,7 +221,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 info = json.loads(data1)
                 kary = info['karyotype']
 
-                if 'json=1' in arguments[1]:
+                if 'json=1' in self.path:
                     l_kary = []              # Create a list where appending all the chromosomes of the karyotype
                     for chrom in kary:
                         l_kary.append(chrom)
@@ -272,7 +274,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 # -- Create a variable with the species data from the JSON received
                 info = json.loads(data1)
 
-                if 'json=1' in arguments[1]:
+                if 'json=1' in self.path:
                     d_json = {'Specie': specie, 'Chromosome': chromosome, 'Length': info['length']}
                     contents = json.dumps(d_json)
                 else:
@@ -302,7 +304,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 URL = HOSTNAME + '/sequence/id/' + NEW_PARAMETERS
                 print(f"URL: {URL}")
 
-                if 'json=1' in arguments[1]:
+                if 'json=1' in self.path:
                     d_json = {'Gene name': gene, 'Sequence': sequence}
                     contents = json.dumps(d_json)  # Convert into JSON
                 else:
@@ -355,8 +357,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 info = json.loads(data1)
                 seq = Seq(sequence)
 
-                if 'json=1' in arguments[1]:
-
+                if 'json=1' in self.path:
                     d_json = {'Gene': gene, 'Starting point': info['start'], 'Ending point': info['end'],
                               'Length': seq.len(), 'ID': info['id'],
                               'Chromosome': info['seq_region_name']}
@@ -400,7 +401,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 print(f"URL: {URL}")
                 bases = ['A', 'C', 'T', 'G']
 
-                if 'json=1' in arguments[1]:
+                if 'json=1' in self.path:
                     list_bases = []       # Create a list where appending all the calculations for the different bases
                     for base in bases:
                         calculation = f" {base}: {round(seq.count_base(base) * (100 / seq.len()), 2)}%"
@@ -456,7 +457,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 # -- Create a variable with the species data from the JSON received
                 info = json.loads(data1)
 
-                if 'json=1' in arguments[1]:
+                if 'json=1' in self.path:
                     li_genes = []    # Create a list where appending all the genes
                     for gene in info:
                         li_genes.append(gene['external_name'])

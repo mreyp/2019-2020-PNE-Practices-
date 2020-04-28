@@ -2,9 +2,9 @@ import http.client
 
 SERVER = 'localhost'
 PORT = 8080
-endpoints = ['/', '/listSpecies?limit=10', '/listSpecies?limit=', '/listSpecies?limit=0', '/listSpecies?limit=wrong',
+endpoints = ['/', '/listSpecies?limit=10', '/listSpecies', '/listSpecies?limit=', '/listSpecies?limit=0', '/listSpecies?limit=wrong',
              '/listSpecies?limit=10&json=1', '/listSpecies?limit=&json=1', '/listSpecies?limit=wrong&json=1',
-             '/listSpecies?limit=400', '/listSpecies?limit=400&json=1',
+             '/listSpecies?json=1',  '/listSpecies?limit=400', '/listSpecies?limit=400&json=1',
              '/karyotype?specie=mouse', '/karyotype?specie=human', '/karyotype?specie=homo+sapiens',
              '/karyotype?specie=coronavirus', '/karyotype?specie=coronavirus&json=1',
              '/karyotype?specie=human&json=1', '/karyotype?specie=homo+sapiens&json=1',
