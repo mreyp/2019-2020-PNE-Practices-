@@ -107,7 +107,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
             contents = Path('index.html').read_text()
             code = 200
 
-        elif resource == "/listSpecies":
+        elif "/listSpecies" == resource:
             try:
                 ENDPOINT = '/info/species/'
                 URL = HOSTNAME + ENDPOINT + PARAMETERS
@@ -146,15 +146,17 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                         for specie in species:
                             SPECIE = specie['display_name']
                             li_specie.append(SPECIE)
-                            d_json = {'Species': li_specie}
-                            contents = json.dumps(d_json)  # Convert into JSON
+                            order_list = sorted(li_specie)    # Order alphabetically
+                            d_json = {'Species': order_list}
+                            contents = json.dumps(d_json)     # Convert into JSON
 
                     else:
                         while counter < int(limit):
                             SPECIE = species[counter]['display_name']
                             li_specie.append(SPECIE)
-                            d_json = {'Species': li_specie}
-                            contents = json.dumps(d_json)  # Convert into JSON
+                            order_list = sorted(li_specie)    # Order alphabetically
+                            d_json = {'Species': order_list}
+                            contents = json.dumps(d_json)     # Convert into JSON
                             counter += 1
 
                 else:
@@ -171,7 +173,8 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                         html += f"<p>The limit you have selected is: {limit}<p/>"
                         html += f"<p>The names of the species are:<p/>"
                         while counter < int(limit):
-                            html += f"<ul><li>{species[counter]['display_name']}</ul></li>"
+                            specie = species[counter]['display_name']
+                            html += f"<ul><li>{specie}</ul></li>"
                             counter += 1
                     contents = html_response("LIST OF SPECIES", html, 'lightpink')
                 code = 200
@@ -184,11 +187,11 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 contents = Path('limit_error.html').read_text()
                 code = 404
 
-        elif "/karyotype" in resource:
+        elif "/karyotype" == resource:
             try:
                 ENDPOINT = '/info/assembly/'
                 pairs = self.path.find('=')
-                specie = self.path[pairs + 1:]
+                specie = self.path[pairs + 1:]        # Take just the name of the specie
                 if '+' in specie:
                     specie = specie.replace("+", "_")
                 if '&' in specie:                     # (When json=1 appears)
