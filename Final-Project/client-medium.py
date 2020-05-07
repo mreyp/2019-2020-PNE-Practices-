@@ -3,12 +3,12 @@ import http.client
 
 SERVER = 'localhost'
 PORT = 8080
-endpoints = ['/','/listSpecies?limit=10', '/listSpecies?limit=', '/listSpecies?limit=0', '/listSpecies?limit=wrong',
+endpoints = ['/', '/listSpecies?limit=10', '/listSpecies?limit=', '/listSpecies?limit=0', '/listSpecies?limit=wrong',
              '/listSpecies?limit=400', '/karyotype?specie=mouse', '/karyotype?specie=human',
              '/karyotype?specie=homo+sapiens', '/karyotype?specie=coronavirus',
              '/chromosomeLength?specie=mouse&chromo=1', '/chromosomeLength?specie=homo+sapiens&chromo=1',
              '/chromosomeLength?specie=mouse&chromo=abc', '/chromosomeLength?specie=coronavirus&chromo=1',
-             '/geneSeq?gene=FRAT1', '/geneSeq?gene=12','/geneSeq?gene=abcd',
+             '/geneSeq?gene=FRAT1', '/geneSeq?gene=12', '/geneSeq?gene=abcd',
              '/geneInfo?gene=FRAT1', '/geneInfo?gene=20', '/geneInfo?gene=abcd',
              '/geneCalc?gene=FRAT1', '/geneCalc?gene=29', '/geneCalc?gene=abcd',
              '/geneList?chromo=1&start=0&end=30000', '/geneList?chromo=abcd&start=0&end=30000',
@@ -21,7 +21,7 @@ for ENDPOINT in endpoints:
     URL = SERVER + ENDPOINT
 
     print()
-    print('* TEST', counter ,':\n')
+    print('* TEST', counter, ':\n')
     print('* INPUT: ')
     print(URL, '\n')
     print('* OUTPUT: ')

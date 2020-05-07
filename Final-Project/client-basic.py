@@ -1,6 +1,5 @@
 import http.client
 
-
 SERVER = 'localhost'
 PORT = 8080
 endpoints = ['/', '/listSpecies?limit=10', '/listSpecies?limit=', '/listSpecies?limit=0', '/listSpecies?limit=wrong',
@@ -16,7 +15,7 @@ for ENDPOINT in endpoints:
     URL = SERVER + ENDPOINT
 
     print()
-    print('* TEST', counter,':\n')
+    print('* TEST', counter, ':\n')
     print('* INPUT: ')
     print(URL, '\n')
     print('* OUTPUT: ')
@@ -41,4 +40,3 @@ for ENDPOINT in endpoints:
     # -- Read the response's body
     data1 = r1.read().decode("utf-8")
     print(data1, '\n')
-

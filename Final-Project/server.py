@@ -107,7 +107,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
             contents = Path('index.html').read_text()
             code = 200
 
-        elif "/listSpecies" == resource:
+        elif "/listSpecies" in resource:
             try:
                 ENDPOINT = '/info/species/'
                 URL = HOSTNAME + ENDPOINT + PARAMETERS
@@ -187,7 +187,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 contents = Path('limit_error.html').read_text()
                 code = 404
 
-        elif "/karyotype" == resource:
+        elif "/karyotype" in resource:
             try:
                 ENDPOINT = '/info/assembly/'
                 pairs = self.path.find('=')
@@ -243,7 +243,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 contents = Path("inputs_error.html").read_text()
                 code = 404
 
-        elif resource == "/chromosomeLength":
+        elif "/chromosomeLength" in resource:
             try:
                 ENDPOINT = '/info/assembly/'
                 separate = self.path.split('&')       # Separate the specie from the chromosome
@@ -290,7 +290,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 contents = Path("inputs_error.html").read_text()
                 code = 404
 
-        elif resource == "/geneSeq":
+        elif "/geneSeq" in resource:
             try:
                 pairs = self.path.find('=')
                 arg = self.path[pairs + 1:]
@@ -311,7 +311,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                     d_json = {'Gene name': gene, 'Sequence': sequence}
                     contents = json.dumps(d_json)  # Convert into JSON
                 else:
-                    html = f"<p> The sequence of the {gene} gene is: </p>"
+                    html = f"<h3> The sequence of the {gene} gene is: </h3>"
                     html += f"<p><textarea readonly rows = '35' cols = '80'>{sequence}</textarea></p>"
                     contents = html_response("SEQUENCE OF A HUMAN GENE", html, 'yellow')
                 code = 200
@@ -324,7 +324,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 contents = Path("inputs_error.html").read_text()
                 code = 404
 
-        elif resource == "/geneInfo":
+        elif "/geneInfo" in resource:
             try:
                 ENDPOINT = '/lookup/id/'
                 pairs = self.path.find('=')
@@ -385,7 +385,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 contents = Path("inputs_error.html").read_text()
                 code = 404
 
-        elif resource == "/geneCalc":
+        elif "/geneCalc" in resource:
             try:
                 pairs = self.path.find('=')
                 arg = self.path[pairs + 1:]
@@ -426,7 +426,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 contents = Path("inputs_error.html").read_text()
                 code = 404
 
-        elif resource == "/geneList":
+        elif "/geneList" in resource:
             try:
                 ENDPOINT = '/overlap/region/human/'
                 separate = self.path.split('&')       # Separate chromosome from start-end

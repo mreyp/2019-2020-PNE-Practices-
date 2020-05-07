@@ -2,11 +2,11 @@ import http.client
 
 SERVER = 'localhost'
 PORT = 8080
-endpoints = ['/', '/listSpecies?limit=10', '/listSpecies', '/listSpecies?limit=', '/listSpecies?limit=0', '/listSpecies?limit=wrong',
-             '/listSpecies?limit=10&json=1', '/listSpecies?limit=&json=1', '/listSpecies?limit=wrong&json=1',
-             '/listSpecies?json=1',  '/listSpecies?limit=400', '/listSpecies?limit=400&json=1',
-             '/karyotype?specie=mouse', '/karyotype?specie=human', '/karyotype?specie=homo+sapiens',
-             '/karyotype?specie=coronavirus', '/karyotype?specie=coronavirus&json=1',
+endpoints = ['/', '/listSpecies?limit=10', '/listSpecies', '/listSpecies?limit=', '/listSpecies?limit=0',
+             '/listSpecies?limit=wrong', '/listSpecies?limit=10&json=1', '/listSpecies?limit=&json=1',
+             '/listSpecies?limit=wrong&json=1', '/listSpecies?json=1',  '/listSpecies?limit=400',
+             '/listSpecies?limit=400&json=1', '/karyotype?specie=mouse', '/karyotype?specie=human',
+             '/karyotype?specie=homo+sapiens', '/karyotype?specie=coronavirus', '/karyotype?specie=coronavirus&json=1',
              '/karyotype?specie=human&json=1', '/karyotype?specie=homo+sapiens&json=1',
              '/chromosomeLength?specie=mouse&chromo=1', '/chromosomeLength?specie=homo+sapiens&chromo=1',
              '/chromosomeLength?specie=mouse&chromo=abc', '/chromosomeLength?specie=coronavirus&chromo=1',
@@ -28,7 +28,7 @@ for ENDPOINT in endpoints:
     URL = SERVER + ENDPOINT
 
     print()
-    print('* TEST', counter ,':\n')
+    print('* TEST', counter, ':\n')
     print('* INPUT: ')
     print(URL, '\n')
     print('* OUTPUT: ')
