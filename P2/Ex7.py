@@ -41,7 +41,7 @@ while f < len(fragments):
     if i % 10 == 0:
         f += 1
 
-# connect
+# -- Connect
 c1 = Client(IP, PORT1)
 c2 = Client(IP, PORT2)
 
@@ -54,7 +54,7 @@ while x < len(fragments):
 
     x += 1
 
-# Print
+# -- Print
 print("Gene FRAT1:", s)
 for frag in fragments:
     print(frag)
