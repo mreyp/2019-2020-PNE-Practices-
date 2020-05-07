@@ -89,49 +89,53 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
             requests = self.path.split("&")
             sequence = argument_command(requests[0])
             op = argument_command(requests[1])
+            seq = Seq(sequence)
+            bases = ['A', 'C', 'T', 'G']
+            for b in sequence:
+                if b in bases:
+                    if "info" == op:
+                        count_bases_string = ""
+                        for base, count in seq.count().items():
+                            s_base = str(base) + ": " + str(count) + " (" + str(
+                                round(count / seq.len() * 100, 2)) + "%)" + "<br>"
+                            count_bases_string += s_base
 
-            if "info" == op:
-                seq_info = Seq(sequence)
-                count_bases_string = ""
-                for base, count in seq_info.count().items():
-                    s_base = str(base) + ": " + str(count) + " (" + str(
-                        round(count / seq_info.len() * 100, 2)) + "%)" + "<br>"
-                    count_bases_string += s_base
+                        response_info = ("Sequence: " + str(seq) + " <br>" +
+                                         "Total length: " + str(seq.len()) + "<br>" +
+                                         count_bases_string)
 
-                response_info = ("Sequence: " + str(seq_info) + " <br>" +
-                                 "Total length: " + str(seq_info.len()) + "<br>" +
-                                 count_bases_string)
+                        html_operation = "<h1>Operation:</h1><p>Information</p>"
+                        html_result = "<h1>Result:</h1>" + "<p>" + response_info + "</p>"
+                        color = 'lightblue'
 
-                html_operation = "<h1>Operation:</h1><p>Info</p>"
-                html_result = "<h1>Result:</h1>" + "<p>" + response_info + "</p>"
-                color = 'lightblue'
+                    elif "comp" == op:
+                        response_comp = seq.complement() + "\n"
 
-            elif "comp" == op:
-                seq_comp = Seq(sequence)
-                response_comp = seq_comp.complement() + "\n"
+                        html_operation = "<h1>Operation:</h1><p>Complementary sequence</p>"
+                        html_result = "<h1>Result:</h1>" + "<p>" + response_comp + "</p>"
+                        color = 'lightgrey'
 
-                html_operation = "<h1>Operation:</h1><p>Comp</p>"
-                html_result = "<h1>Result:</h1>" + "<p>" + response_comp + "</p>"
-                color = 'lightgrey'
+                    elif "rev" == op:
+                        response_rev = seq.reverse() + "\n"
 
-            elif "rev" == op:
-                seq_rev = Seq(sequence)
-                response_rev = seq_rev.reverse() + "\n"
+                        html_operation = "<h1>Operation:</h1><p>Reverse sequence</p>"
+                        html_result = "<h1>Result:</h1>" + "<p>" + response_rev + "</p>"
+                        color = 'lightgreen'
 
-                html_operation = "<h1>Operation:</h1><p>Rev</p>"
-                html_result = "<h1>Result:</h1>" + "<p>" + response_rev + "</p>"
-                color = 'lightgreen'
+                    html_sequence = "<h1>Sequence:</h1>" + "<p>" + sequence + "</p>"
+                    html = html_sequence + html_operation + html_result
 
-            html_sequence = "<h1>Sequence:</h1>" + "<p>" + sequence + "</p>"
-            html = html_sequence + html_operation + html_result
-
-            contents = html_response("OPERATION", html, color)
-            error = 200
+                    contents = html_response("OPERATION", html, color)
+                    error = 200
+                else:
+                    file = "Error-1.html"
+                    contents = Path(file).read_text()
+                    error = 404
 
         else:
             file = "Error-1.html"
             contents = Path(file).read_text()
-            self.send_response(404)  # -- Status line: ERROR NOT FOUND
+            error = 404  # -- Status line: ERROR NOT FOUND
 
         self.send_response(error)
         # Generating the response message
