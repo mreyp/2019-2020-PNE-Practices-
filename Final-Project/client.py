@@ -29,9 +29,9 @@ for ENDPOINT in endpoints:
 
     print()
     print('* TEST', counter, ':\n')
-    print('* INPUT: ')
-    print(URL, '\n')
-    print('* OUTPUT: ')
+    print('\t * INPUT: ')
+    print('\t', URL, '\n')
+    print('\t * OUTPUT: ')
 
     # Connect with the server
     conn = http.client.HTTPConnection(SERVER, PORT)
@@ -48,8 +48,7 @@ for ENDPOINT in endpoints:
     r1 = conn.getresponse()
 
     # -- Print the status line
-    print(f"Response received!: {r1.status} {r1.reason}\n")
-
+    print(f"\t Response received!: {r1.status} {r1.reason}\n")
     # -- Read the response's body
     data1 = r1.read().decode("utf-8")
     print(data1, '\n')
